@@ -1,0 +1,20 @@
+@start
+    # *** START ***
+    PRINT "START THE PROGRAM"
+    GOTO @main
+@helloWorld
+    # *** GREETINGS TEXT ***
+    PRINT "HELLO WORLD"
+    RETURN
+@greetings
+    # *** GREETINGS TEXT ***
+    PRINT "HELLO C64"
+    RETURN
+@main
+    # *** START THE MAIN ***
+    PRINT "START THE MAIN"
+    GOSUB @helloWorld
+    OK=1
+    IF OK=1 THEN GOSUB @greetings
+    PRINT ""
+    # *** END ***
