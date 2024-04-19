@@ -1,20 +1,30 @@
-@start
+define {screenMap}=1024
+define {colorMap}=55296
+define {line}=40
+define {brick}=102
+define {green}=5
+
+@start:
     # *** START ***
     PRINT "START THE PROGRAM"
-    GOTO @main
-@helloWorld
+    GOTO @main:
+@helloWorld:
     # *** GREETINGS TEXT ***
     PRINT "HELLO WORLD"
     RETURN
-@greetings
+@greetings:
     # *** GREETINGS TEXT ***
     PRINT "HELLO C64"
     RETURN
-@main
+@main:
     # *** START THE MAIN ***
     PRINT "START THE MAIN"
-    GOSUB @helloWorld
+    GOSUB @helloWorld:
     OK=1
-    IF OK=1 THEN GOSUB @greetings
+    IF OK=1 THEN GOSUB @greetings:
     PRINT ""
+    # *** USE DEFINES ***
+    POS=17*{line}+20
+    POKE {screenMap}+POS,{brick}
+    POKE {colorMap}+POS,{green}
     # *** END ***

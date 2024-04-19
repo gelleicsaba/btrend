@@ -21,6 +21,8 @@ verb=False
 skipCm=False
 seqStep=10
 errs=False
+defines1=[]
+defines2=[]
 for p in range(n):
     if p > 0:
         if sys.argv[p] == "-v":
@@ -46,6 +48,18 @@ if verb:
     print("Reading content from input file...")
 with open(inFile) as f:
     inLines2 = f.readlines()
+for t in range(len(inLines2)):
+    if inLines2[t].strip()[:7]=="define ":
+        tmp=inLines2[t].strip()[7:].split("=")
+        defines1.append(tmp[0].strip())
+        defines2.append(tmp[1].strip())
+        inLines2[t]=""
+for t in range(len(defines1)):
+    if verb:
+        print("Replace defines, '"+defines1[t]+"' to '"+defines2[t]+"'.")
+    for q in range(len(inLines2)):
+        if inLines2[q][:2]!="# ":
+            inLines2[q]=inLines2[q].replace(defines1[t],defines2[t])
 if not skipCm:
     inLines=[]
     for x in range(len(inLines2)):
