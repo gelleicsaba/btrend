@@ -5,7 +5,7 @@ To run it you need python3.
 ## Labels
 
 Use labels in your basic text file to replace the sequence line numer.
-The labels must be start with @ and should be ended with same character (e.g. @start:)
+The labels must be start with @ and should be ended with the same character (e.g. @start:)
 
 ### Label in commands
 The labels can be used with the GOTO, GOSUB commands.
@@ -41,7 +41,7 @@ btrend -in=<input> -out=<output> [options]
 
 options:
   -v : verbose
-  -s : skip commnets
+  -s : skip comments
   -step=<num> : sequence step
 ```
 
