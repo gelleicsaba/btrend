@@ -4,6 +4,12 @@ define {line}=40
 define {brick}=102
 define {green}=5
 
+number MyFavouriteNumber
+number EurHufExchangeRate
+number IsGreetingPrinted
+string TheWeatherToday
+number Position
+
 @start:
     # *** START ***
     PRINT "START THE PROGRAM"
@@ -20,11 +26,17 @@ define {green}=5
     # *** START THE MAIN ***
     PRINT "START THE MAIN"
     GOSUB @helloWorld:
-    OK=1
-    IF OK=1 THEN GOSUB @greetings:
+    MyFavouriteNumber=7
+    PRINT "MY FAV NUMBER IS ",MyFavouriteNumber
+    EurHufExchangeRate=394.35
+    PRINT "HUF/EUR IS ",EurHufExchangeRate
+    TheWeatherToday="SUNNY"
+    PRINT "THE WEATHER IS ",TheWeatherToday," TODAY."
+    IsGreetingPrinted=1
+    IF IsGreetingPrinted=1 THEN GOSUB @greetings:
     PRINT ""
     # *** USE DEFINES ***
-    POS=17*{line}+20
-    POKE {screenMap}+POS,{brick}
-    POKE {colorMap}+POS,{green}
+    Position=13*{line}+39
+    POKE {screenMap}+Position,{brick}
+    POKE {colorMap}+Position,{green}
     # *** END ***

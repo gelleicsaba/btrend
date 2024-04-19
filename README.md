@@ -34,6 +34,28 @@ You can specify replacements and you can use them anywhere.
 	PRINT "{greeting}"
 ```
 
+## Variables 
+
+You can specify variables with longer name.
+This logical names will be a short c64 variable version, like A1,BC or G7$.
+You can specify two types, number or string.
+
+```
+	number IsReady
+	number WeatherIsSunny
+	string GreetingText
+
+	IsReady=1
+	WeatherIsSunny=1
+	GreetingText = "I AM READY"
+	IF IsReady=1 AND WeatherIsSunny=1 THEN PRINT GreetingText
+```
+Warning: Dont use short or similar variable names like Element and Elementalist,
+because the program use string replace routin.
+(if Element=4 and Elementalist=23 then the output will be 4alist=23 !)
+If you insists on using these names, you had better using prefix and/or postfix
+(e.g. _Element_ , _Elementalist_)
+
 ## Usage
 
 ```
@@ -69,7 +91,7 @@ Download the c64list, and you can create the prg file from output.
 
 ### Example: build a Hello world basic program
 
-Build a basic hello world program.
+Build a basic hello world test program.
 ```
 	define {greeting}=HELLO WORLD!
 	define {black}=144

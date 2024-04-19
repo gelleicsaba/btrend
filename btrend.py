@@ -54,6 +54,25 @@ for t in range(len(inLines2)):
         defines1.append(tmp[0].strip())
         defines2.append(tmp[1].strip())
         inLines2[t]=""
+varIndex1=0
+varIndex2=0
+var1st="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var2nd="0123456789"+var1st
+for t in range(len(inLines2)):
+    if inLines2[t].strip()[:7]=="number " or inLines2[t].strip()[:7]=="string ":
+        varName=inLines2[t].strip()[7:]
+        varRealName=var1st[varIndex1]+var2nd[varIndex2]
+        if inLines2[t].strip()[:7]=="string ":
+            varRealName=varRealName+"$"
+        if verb:
+            print("Create a variable to '"+varName+"' ('"+varRealName+"').")
+        defines1.append(varName)
+        defines2.append(varRealName)
+        varIndex2 = varIndex2 + 1
+        if varIndex2==len(var2nd):
+            varIndex1 = varIndex1 + 1
+            varIndex2 = 0
+        inLines2[t]=""
 for t in range(len(defines1)):
     if verb:
         print("Replace defines, '"+defines1[t]+"' to '"+defines2[t]+"'.")
