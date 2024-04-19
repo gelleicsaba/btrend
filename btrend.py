@@ -9,7 +9,7 @@ if n == 1:
     print("")
     print("options:")
     print("  -v : verbose")
-    print("  -s : skip commnets")
+    print("  -s : skip comments")
     print("  -step=<num> : sequence step")
     print("")
     print("e.g.: ")
