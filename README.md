@@ -76,7 +76,7 @@ Build a basic hello world program.
 	
 	PRINT CHR$({black})
 @mainCycle:
-	# *** start program ***
+	# *** START PROGRAM ***
 	PRINT "{greeting}"
 	GOTO @mainCycle:
 ```
@@ -90,7 +90,7 @@ c64list hello.out.txt -ovr -prg:hello.prg
 We can see the ouput file (hello.out.txt), and there will be the line sequences.
 ```
 5 PRINT CHR$(144)
-10 REM *** start program ***
+10 REM *** START PROGRAM ***
 15 PRINT "HELLO WORLD!"
 20 GOTO 10
 ```
