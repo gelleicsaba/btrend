@@ -75,6 +75,14 @@ python btrend.py -in=dummy.txt -out=dummy.out.txt -s -step=5
 
 (or in linux you can use with python3 ...)
 ```
+## Includes
+You can insert more files with using command.\
+```
+using "path to file"
+
+e.g.
+using "lib/include.txt"
+```
 
 ## Comments
 
