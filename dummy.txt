@@ -1,3 +1,5 @@
+using "lib/include.txt"
+
 define {screenMap}=1024
 define {colorMap}=55296
 define {line}=40
@@ -39,4 +41,7 @@ number Position
     Position=13*{line}+39
     POKE {screenMap}+Position,{brick}
     POKE {colorMap}+Position,{green}
+    # *** TEST INCLUDES ***
+    IF IncludeWorks1=1 THEN PRINT "INCLUDE WORKS I."
+    IF IncludeWorks2=2 THEN PRINT "INCLUDE WORKS II."
     # *** END ***

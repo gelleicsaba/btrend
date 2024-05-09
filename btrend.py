@@ -48,6 +48,18 @@ if verb:
     print("Reading content from input file...")
 with open(inFile) as f:
     inLines2 = f.readlines()
+
+for t in range(len(inLines2)):
+    if inLines2[t].strip()[:6]=="using ":
+        usingPath = "./" + inLines2[t].split("\"")[1]
+        if verb:
+            print("Inserting file: " + usingPath)
+        inLines2[t]=""
+        with open(usingPath) as f:
+            using=f.readlines()
+            for q in using:
+                inLines2.insert(0,q)
+
 for t in range(len(inLines2)):
     if inLines2[t].strip()[:7]=="define ":
         tmp=inLines2[t].strip()[7:].split("=")
