@@ -57,8 +57,8 @@ for t in range(len(inLines2)):
         inLines2[t]=""
         with open(usingPath) as f:
             using=f.readlines()
-            for q in using:
-                inLines2.insert(0,q)
+        tmp=using+inLines2
+        inLines2=tmp
 
 for t in range(len(inLines2)):
     if inLines2[t].strip()[:7]=="define ":
