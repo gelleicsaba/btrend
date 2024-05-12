@@ -113,7 +113,8 @@ else:
                 if verb:
                     print("Skip the comment on line " + str(x))            
         else:
-            print("Skip empty line on row " + str(x))
+            if verb:
+                print("Skip empty line on row " + str(x))
 m=0
 for t in inLines:
     if len(t)>0 and t[0]!="@":
