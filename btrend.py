@@ -59,6 +59,16 @@ for t in range(len(inLines2)):
             using=f.readlines()
         tmp=using+inLines2
         inLines2=tmp
+    elif inLines2[t].strip()[:8]=="include ":
+        usingPath = "./" + inLines2[t].split("\"")[1]
+        if verb:
+            print("Including file: " + usingPath)
+        inLines2[t]=""
+        with open(usingPath) as f:
+            using=f.readlines()
+        for x in range(len(using)):
+            y=len(using)-(x+1)
+            inLines2.insert(t,using[y])
 
 for t in range(len(inLines2)):
     if inLines2[t].strip()[:7]=="define ":

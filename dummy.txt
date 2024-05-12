@@ -42,6 +42,10 @@ number Position
     POKE {screenMap}+Position,{brick}
     POKE {colorMap}+Position,{green}
     # *** TEST INCLUDES ***
-    IF IncludeWorks1=1 THEN PRINT "INCLUDE WORKS I."
-    IF IncludeWorks2=2 THEN PRINT "INCLUDE WORKS II."
+    IF IncludeWorks1=1 THEN PRINT "USING WORKS I."
+    IF IncludeWorks2=2 THEN PRINT "USING WORKS II."
+include "data.txt"
+    N=1
+    FOR X=1 TO {numOfData}:READ Q:N=N+Q:NEXT
+    PRINT "SUMMARY: ",N
     # *** END ***
