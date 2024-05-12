@@ -77,7 +77,7 @@ python btrend.py -in=dummy.txt -out=dummy.out.txt -s -step=5
 ```
 ## Includes or usings
 There are two solution to include more files, before the building.\
-The 'using' means, that you can insert another file content to the beginning of the file,
+The 'using' means that you can insert another file content to the beginning of the file,
 but the 'include' will insert the file content into the position of 'include'.
 
 ### Using
