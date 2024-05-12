@@ -49,7 +49,8 @@ if verb:
 with open(inFile) as f:
     inLines2 = f.readlines()
 
-for t in range(len(inLines2)):
+t=0
+while t<len(inLines2):
     if inLines2[t].strip()[:6]=="using ":
         usingPath = "./" + inLines2[t].split("\"")[1]
         if verb:
@@ -69,6 +70,7 @@ for t in range(len(inLines2)):
         for x in range(len(using)):
             y=len(using)-(x+1)
             inLines2.insert(t,using[y])
+    t=t+1
 
 for t in range(len(inLines2)):
     if inLines2[t].strip()[:7]=="define ":
