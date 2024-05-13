@@ -11,6 +11,7 @@ if n == 1:
     print("  -v : verbose")
     print("  -s : skip comments")
     print("  -step=<num> : sequence step")
+    print("  -t : turn on test mode")
     print("")
     print("e.g.: ")
     print("  python btrend.py \"-in=c:\\your folder\\input-file.txt\" \"-out=c:\\your folder\\output-file.txt\" -v -s -step=100")
@@ -21,6 +22,7 @@ verb=False
 skipCm=False
 seqStep=10
 errs=False
+testCase=False
 defines1=[]
 defines2=[]
 for p in range(n):
@@ -35,6 +37,8 @@ for p in range(n):
             outFile=(sys.argv[p])[5:]
         elif len(sys.argv[p]) > 5 and (sys.argv[p])[:6] == "-step=":
             seqStep=int((sys.argv[p])[6:])
+        elif sys.argv[p] == "-t":
+            testCase=True
 if inFile==None or outFile==None:
     print("Error: No input/output file specified")
     sys.exit(1)
@@ -44,6 +48,11 @@ if verb:
     print("  output file: " + outFile)
     print("  skip comments: " + str(skipCm))
     print("  sequence step: " + str(seqStep))
+    if not testCase:
+        print("  test cases: No")
+    else:
+        print("  test cases: Yes")
+
 if verb:
     print("Reading content from input file...")
 with open(inFile) as f:
@@ -70,13 +79,24 @@ while t<len(inLines2):
         for x in range(len(using)):
             y=len(using)-(x+1)
             inLines2.insert(t,using[y])
+    elif inLines2[t].strip()[:2]=="! ":
+        if not testCase:
+            inLines2[t]="\t"+inLines2[t].strip()[2:]
+        else:
+            inLines2[t]=""
+    elif inLines2[t].strip()[:2]=="? ":
+        if not testCase:
+            inLines2[t]=""
+        else:
+            inLines2[t]="\t"+inLines2[t].strip()[2:]
+
     t=t+1
 
 for t in range(len(inLines2)):
     if inLines2[t].strip()[:7]=="define ":
         tmp=inLines2[t].strip()[7:].split("=")
-        defines1.append(tmp[0].strip())
-        defines2.append(tmp[1].strip())
+        defines1.append(tmp[0].strip().replace("\\20"," "))
+        defines2.append(tmp[1].strip().replace("\\20"," "))
         inLines2[t]=""
 varIndex1=0
 varIndex2=0
