@@ -67,6 +67,7 @@ options:
   -v : verbose
   -s : skip comments
   -step=<num> : sequence step
+  -t : turn on test mode
 ```
 
 e.g. you can create the output with these command
@@ -76,7 +77,7 @@ python btrend.py -in=dummy.txt -out=dummy.out.txt -s -step=5
 (or in linux you can use with python3 ...)
 ```
 ## Includes or usings
-There are two solution to include more files, before the building.\
+There are two solutions to include more files, before the building.\
 The 'using' means that you can insert another file content to the beginning of the file,
 but the 'include' will insert the file content into the position of 'include'.
 
@@ -95,6 +96,17 @@ e.g.
 ...
 include "lib/include.txt"
 ...
+```
+### Test mode
+You can enable or disable specific rows depends on test mode.\
+The test mode could be turned on with /t option.
+- ? \<commands\> : this row is enable if test mode is on
+- ! \<commands\> : this row is disable if test mode is on
+
+```
+	! PRINT "THIS TEXT IS NOT VISIBLE IN TEST MODE!"
+	? PRINT "THIS TEXT IS VISIBLE ONLY IN TEST MODE!"
+	PRINT "THIS TEXT IS VISIBLE WHETHER TEST IS ON OR OFF"
 ```
 
 

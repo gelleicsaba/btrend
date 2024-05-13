@@ -48,4 +48,6 @@ include "data.txt"
     N=1
     FOR X=1 TO {numOfData}:READ Q:N=N+Q:NEXT
     PRINT "SUMMARY: ",N
+    ? PRINT "VISIBLE ONLY IN TEST MODE"
+    ! PRINT "NOT VISIBLE IN TEST MODE"
     # *** END ***
