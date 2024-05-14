@@ -50,4 +50,14 @@ include "data.txt"
     PRINT "SUMMARY: ",N
     ? PRINT "VISIBLE ONLY IN TEST MODE"
     ! PRINT "NOT VISIBLE IN TEST MODE"
+
+    WHEN MyFavouriteNumber>5
+    PRINT "MY FAV. NUM. > 5"
+    SKIP
+
+    WHEN MyFavouriteNumber=3
+    PRINT "MY FAV. NUM. = 3"
+    SKIP
+
+
     # *** END ***

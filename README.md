@@ -121,6 +121,37 @@ You can write comments, and you can turn off when you create the output.
 ```
 if you dont turn off the comments the code will contain REM-s.
 
+## WHEN vs. IF
+
+In case of the "if statement" (like 'IF condition THEN ...'), you must
+create labels to skip the statements block, and you must use reverse condition in that case too.\
+e.g.
+```
+A=4
+IF A>=5 THEN GOTO @SKIP1:
+PRINT "THE A < 5"
+PRINT "..."
+@SKIP1:
+```
+
+With WHEN keyword you can create a statement block without any label, and
+you dont have to specify reverse condition.\
+Certainly you must specify the end of statements (with SKIP keyword)
+e.g.:
+```
+A=4
+WHEN A<5
+PRINT "THE A < 5"
+PRINT "..."
+SKIP
+
+WHEN A>20
+PRINT "THE A > 20"
+SKIP
+
+```
+Important: You can't use the "WHEN...SKIP" nested.
+
 ## Use c64list to create prg from output
 
 Download the c64list, and you can create the prg file from output.

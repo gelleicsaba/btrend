@@ -89,7 +89,6 @@ while t<len(inLines2):
             inLines2[t]=""
         else:
             inLines2[t]="\t"+inLines2[t].strip()[2:]
-
     t=t+1
 
 for t in range(len(inLines2)):
@@ -127,7 +126,7 @@ if not skipCm:
     inLines=[]
     for x in range(len(inLines2)):
         if len(inLines2[x].strip())>0:
-            if inLines2[x].strip()[:2]=="# ":
+            if inLines2[x].lstrip()[:2]=="# ":
                 if verb:
                     print("Add a comment to line " + str(x))
                 inLines.append("REM " + inLines2[x].strip()[2:])
@@ -139,7 +138,7 @@ else:
     inLines=[]
     for x in range(len(inLines2)):
         if len(inLines2[x].strip())>0:
-            if inLines2[x].strip()[:2]!="# ":
+            if inLines2[x].lstrip()[:2]!="# ":
                 inLines.append(inLines2[x])
             else:
                 if verb:
@@ -147,6 +146,23 @@ else:
         else:
             if verb:
                 print("Skip empty line on row " + str(x))
+
+skipAddress=100000
+for x in range(len(inLines)):
+    if inLines[x].lstrip()[:5]=="WHEN ":
+        y=x+1
+        skipLabel=None
+        while skipLabel==None and y<len(inLines):
+            if inLines[y].lstrip()[:4]=="SKIP":
+                skipLabel="@SKIP"+str(skipAddress)+":"
+                inLines[y]=skipLabel
+                if y==len(inLines)-1:
+                    inLines.append(":")
+                skipAddress=skipAddress+1
+            y=y+1
+        inLines[x]=inLines[x].replace("WHEN ","IFNOT(")
+        inLines[x]=inLines[x].rstrip()+") THEN GOTO "+skipLabel
+
 m=0
 for t in inLines:
     if len(t)>0 and t[0]!="@":
