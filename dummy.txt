@@ -12,6 +12,17 @@ number IsGreetingPrinted
 string TheWeatherToday
 number Position
 
+struct Product 100
+    Name ""
+    Type ""
+    Quantity 0
+---
+
+struct Customer 100
+    Name ""
+    Address ""
+---
+
 @start:
     # *** START ***
     PRINT "START THE PROGRAM"
@@ -59,5 +70,81 @@ include "data.txt"
     PRINT "MY FAV. NUM. = 3"
     SKIP
 
+    # SPACE TO CONTINUE
+    PRINT "PRESS SPACE TO CONTIONUE!"
+
+define {keyInput}=197
+define {keySpace}=60
+
+@Wait:
+    P=PEEK({keyInput})
+    IF P<>{keySpace} THEN GOTO @Wait:
+
+    # *** TEST STRUCTURES ***
+ref products
+ref product
+ref customer
+    DIM products(3)
+
+    WITH P Product
+    WITH C Customer
+
+    X=0
+    NEW Product AS product
+    P.Name(product)="APPLE"
+    P.Type(product)="FRUITS"
+    P.Quantity(product)=3000
+    products(X) = product
+
+    X=X+1
+    NEW Product AS product
+    P.Name(product)="TOMATO"
+    P.Type(product)="VEGETABLES"
+    P.Quantity(product)=500
+    products(X) = product
+
+    X=X+1
+    NEW Product AS product
+    P.Name(product)="ONION"
+    P.Type(product)="VEGETABLES"
+    P.Quantity(product)=700
+    products(X) = product
+    
+    PRINT "LIST OF PRODUCTS:"
+    FOR X=0 TO 2
+    product=products(X)
+    PRINT " - "+P.Name(product)
+    PRINT "   TYPE: "+P.Type(product)
+    PRINT "   QUANTITY: ",P.Quantity(product)
+    NEXT    
+
+    NEW Customer AS customer
+    C.Name(customer)="HARVEY SUTTON"
+    C.Address(customer)="54336 NEWCASTLE"
+
+    PRINT "LAST CUSTOMER:"
+    PRINT "  - "+C.Name(customer)
+    PRINT "       ADDRESS: "+C.Address(customer)
+
+    # *** DESTROY/CLEAR STRUCTURES ***
+    FOR X=0 TO 2
+    FREE Product products(X)
+    NEXT
+    
+    FREE Customer customer
+
+    # *** CHECK IF OBJECTS EXIST ***
+    FOR X=0 TO 2
+    WHEN P.$(X)=0
+    PRINT X
+    PRINT "  THE PRODUCT OBJ. HAS BEEN CLEARED"
+    SKIP
+    NEXT
+
+    WHEN C.$(customer)=0
+    PRINT "THE LAST CUSTOMER OBJ. HAS BEEN CLEARED"
+    SKIP
+
+    CLRWITH
 
     # *** END ***

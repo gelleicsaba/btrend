@@ -58,7 +58,7 @@ If you insists on using these names, you had better using prefix and/or postfix
 (e.g. _Element_ , _Elementalist_)
 ```
 
-## Usage
+## Command line usage
 
 ```
 btrend -in=<input> -out=<output> [options]
@@ -152,9 +152,161 @@ SKIP
 ```
 Important: You can't use the "WHEN...SKIP" nested.
 
+## Structures
+
+Structures is complex types, and you can create instances from that types. \
+e.g. There is a product type, and you can create one or more products, but all have the same properties.
+
+You can declare the type with "struct \<name\> \<maximum instance\>", and you must specify 
+the properties.
+
+```
+struct Product 100
+	Title ""
+	Type ""
+	Quantity 0
+---
+```
+You can specify other default values to the properties (not like "" or 0).\
+The struct definition ends with --- mark. \
+
+### Creating instances
+
+You need to declare a ref variable, and you can refer on an instance with this variable.
+The command of new instance creating is "NEW \<struct name\> AS \<ref name\>"
+```
+ref product
+	NEW Product AS product
+```
+Important: Don't use "NEW.. AS .." with another command(s) in same line.
+
+But how we could get a property value?
+
+There is a shorter and longer version for that.
+The longer version is that you write the struct name, the short version is that you use WITH
+keyword.
+
+Format of longer version: \<struct name\>.\<property name\>(\<ref name\>)
+```
+ref product
+	NEW Product AS product
+	Product.Title(product) = "IMPACT DRILL"
+	Product.Quantity(product) = 40
+```
+
+Format of shorter version: \<alias name\>.\<property name\>(\<ref name\>)
+```
+ref product
+	NEW Product AS product
+	WITH P Product
+	P.Title(product) = "IMPACT DRILL"
+	P.Quantity(product) = 40
+```
+As you can see above, you can use abbreviations with "WITH" keyword.
+If you'd like to clear the abbrevations, use "CLRWITH" keyword.
+e.g.
+```
+	WITH P Product
+	WITH C Customer
+	...
+	CLRWITH
+
+	WITH P Player
+	...
+```
+
+### Instance arrays
+It's very simple to create instance array. You need to declare the array with "DIM".
+```
+ref products
+ref product
+    DIM products(3)
+
+    WITH P Product
+
+    X=0
+    NEW Product AS product
+    P.Name(product)="IMPACT DRILL"	
+	...
+	products(X) = product
+
+    X=1
+    NEW Product AS product
+    P.Name(product)="SCREWDRIVER"
+	...
+	products(X) = product	
+```
+
+### Free/Clear object instance
+
+If you'd like to clear instance use "FREE \<struct name\> \<instance ref\>"
+
+```
+	FOR X=0 TO 2
+	FREE Product products(X)
+	NEXT
+	
+	FREE Customer customer
+```
+
+### Check if instance exists
+
+There is an array that tells existing/non-existing instances. You can use \<struct name\>.$(\<ref name\>)
+```
+	WITH P Product
+    NEW Product AS product
+    P.Name(product)="IMPACT DRILL"	
+
+	WHEN P.$(product)=1
+	PRINT P.Name(product)+" IS EXIST"
+	SKIP
+
+	FREE Product product
+
+	WHEN P.$(product)<>1
+	PRINT "THE PRODUCT IS NOT EXIST"
+	SKIP
+```
+Important: The \$ sign doesn't mean that it would be a string. (The '\$' is a special property name of instances)
+
+### Join ojbects
+
+If you'd like to join 2 struct objects, you can use 'ref' as property type.
+
+```
+struct Product 50
+    Name ""
+	Customer ref
+    Ordered 0
+---
+
+struct Customer 50
+    Name ""
+    Address ""
+---
+
+ref product
+ref customer
+	
+	WITH P Product
+	WITH C Customer
+	
+	NEW Customer AS customer
+	C.Name(customer)="HARVEY SUTTON"
+
+	NEW Product AS product
+	P.Title(product) = "IMPACT DRILL"
+	P.Customer(product) = customer
+```
+
+
 ## Use c64list to create prg from output
 
 Download the c64list, and you can create the prg file from output.
+```
+python.exe btrend.py "-in=dummy.txt" "-out=out.txt" -step=5 -s -t
+c64list out.txt -ovr -prg:out.prg
+```
 
 ### Example: build a Hello world basic program
 
@@ -188,3 +340,8 @@ To start the basic program drag and drop the d64 file to vice (smart attach).
 ## Dirmaster
 If you have already one or more prg file, you can create the d64 and put the prg-s into a d64 disc.
 
+The most easiest way to run or test .prg, drag and drop it into a running vice emulator window.
+
+## Examples
+
+The dummy.txt in here contains almost every type of examples.
