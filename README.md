@@ -333,7 +333,7 @@ number CardSuit
     PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
     CardNum=P.Cards1(player,1) : CardSuit=P.Cards2(player,1)
     PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
-	
+
     CLRWITH
 ```
 As you can see the array will be actually a 2 dimensional array .\
@@ -385,3 +385,27 @@ The most easiest way to run or test .prg, drag and drop it into a running vice e
 ## Examples
 
 The dummy.txt in here contains almost every type of examples.
+
+## Speed up you basic program with Blitz
+
+The basic programs are very slow in general that's why it is recommended to speed up.\
+The most simplier method is that you rebuild it with blitz.
+
+https://commodore.software/downloads/download/53-basic-compilers/1016-blitz
+
+
+Create an empty d64 image with dirmaster ; Disk / New / D64\
+Import your prg file into d64 image ; File / Import \
+Save the d64 image ; Disk / Save (or Save as)
+
+Start the blitz on VICE.\
+Choose 1. (1 side Floppy)\
+Attach your d64 image (attach only, dont start the prg)\
+Type the program name (without .prg)\
+If the progress is ready, reset and start your program
+ (usually the name is C/\<prg name\> )
+
+Optionally, you can export the new prg with dirmaster (File / Import) and you can delete the old slow prg file from d64.
+
+
+

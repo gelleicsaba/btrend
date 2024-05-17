@@ -176,17 +176,13 @@ string CardNums
 string CardSuites
     CardNums="00 2 3 4 5 6 7 8 910 J Q K A"
     CardSuites=CHR$(97)+CHR$(115)+CHR$(120)+CHR$(122)
-
 number CardNum
 number CardSuit
     PRINT P.Name(player)+"'S POKER CARDS:" 
-    
     CardNum=P.Cards1(player,0) : CardSuit=P.Cards2(player,0)
     PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
-
     CardNum=P.Cards1(player,1) : CardSuit=P.Cards2(player,1)
     PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
-
     CLRWITH
 
 
