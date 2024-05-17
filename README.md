@@ -309,6 +309,19 @@ struct PokerPlayer 4
     Cards2 (2)
 ---
 
+
+ref player
+    NEW PokerPlayer AS player
+
+    WITH P PokerPlayer
+    P.Name(player)="SAM MAY"
+    
+    P.Cards1(player,0)=7
+    P.Cards2(player,0)=1
+    
+    P.Cards1(player,1)=12
+    P.Cards2(player,1)=4
+
 string CardNums
 string CardSuites
     CardNums="00 2 3 4 5 6 7 8 910 J Q K A"
@@ -320,6 +333,7 @@ number CardSuit
     PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
     CardNum=P.Cards1(player,1) : CardSuit=P.Cards2(player,1)
     PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
+	
     CLRWITH
 ```
 As you can see the array will be actually a 2 dimensional array .\
