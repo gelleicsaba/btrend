@@ -109,6 +109,7 @@ while t<len(inLines2):
         inLines2[t]=""
         elements=[]
         types=[]
+        arrays=[]
         defaults=[]
         while q<len(inLines2) and inLines2[q].rstrip()[:3]!="---":
             sp=inLines2[q].rstrip().split()
@@ -116,10 +117,17 @@ while t<len(inLines2):
             defaults.append(sp[1])
             if sp[1].startswith("\""):
                 types.append("string")
+                arrays.append(0)
             elif sp[1].startswith("ref"):
                 types.append("ref")
+                arrays.append(0)
+            elif sp[1].startswith("("):
+                types.append("array")
+                arrNum=int(sp[1].replace("(","").replace(")",""))
+                arrays.append(arrNum)
             else:
                 types.append("number")
+                arrays.append(0)
             inLines2[q]=""
             q=q+1
         if inLines2[q].rstrip()[:3]=="---":
@@ -131,10 +139,16 @@ while t<len(inLines2):
         ins.append("define "+cName+".MAX$="+str(cBufSize))
         ins.append("number "+cName+".$")
         for q in range(len(elements)):
-            ins.append(types[q]+" "+cName+"."+elements[q])
+            if (types[q]!="array"):
+                ins.append(types[q]+" "+cName+"."+elements[q])
+            else:
+                ins.append("number "+cName+"."+elements[q])
         ins.append("\tDIM "+cName+".$("+str(cBufSize)+")")
         for q in range(len(elements)):
-            ins.append("\tDIM "+cName+"."+elements[q]+"("+str(cBufSize)+")")
+            if (types[q]!="array"):
+                ins.append("\tDIM "+cName+"."+elements[q]+"("+str(cBufSize)+")")
+            else:
+                ins.append("\tDIM "+cName+"."+elements[q]+"("+str(cBufSize)+","+str(arrays[q])+")")
         ins.append("\tGOTO @skipSubRoutine"+str(skipSubRoutine)+":")
         ins.append("@New"+cName+":")
         ins.append("\tFOR SubResult=0 TO "+cName+".MAX$-1")
@@ -145,7 +159,10 @@ while t<len(inLines2):
         ins.append("@new"+cName+":")
         ins.append("\t"+cName+".$(SubResult)=1")
         for q in range(len(elements)):
-            ins.append("\t"+cName+"."+elements[q]+"(SubResult)="+defaults[q])
+            if (types[q]!="array"):
+                ins.append("\t"+cName+"."+elements[q]+"(SubResult)="+defaults[q])
+            else:
+                ins.append("\tFORZ9=0TO"+str(arrays[q])+"-1:"+cName+"."+elements[q]+"(SubResult,Z9)=0:NEXT")
         ins.append("\tRETURN")
 
         ins.append("@Free"+cName+":")

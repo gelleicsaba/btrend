@@ -23,6 +23,12 @@ struct Customer 100
     Address ""
 ---
 
+struct PokerPlayer 4
+    Name ""
+    Cards1 (2)
+    Cards2 (2)
+---
+
 @start:
     # *** START ***
     PRINT "START THE PROGRAM"
@@ -144,7 +150,48 @@ ref customer
     WHEN C.$(customer)=0
     PRINT "THE LAST CUSTOMER OBJ. HAS BEEN CLEARED"
     SKIP
+    CLRWITH
+
+    PRINT "PRESS SPACE TO CONTIONUE!"
+@Wait2:
+    P=PEEK({keyInput})
+    IF P<>{keySpace} THEN GOTO @Wait2:
+
+    # *** TEST ARR PROPS IN STRUCT ***
+ref player
+    NEW PokerPlayer AS player
+
+    WITH P PokerPlayer
+    P.Name(player)="SAM MAY"
+    
+    P.Cards1(player,0)=7
+    P.Cards2(player,0)=1
+    
+    P.Cards1(player,1)=12
+    P.Cards2(player,1)=4
+
+    
+
+string CardNums
+string CardSuites
+    CardNums="00 2 3 4 5 6 7 8 910 J Q K A"
+    CardSuites=CHR$(97)+CHR$(115)+CHR$(120)+CHR$(122)
+
+number CardNum
+number CardSuit
+    PRINT P.Name(player)+"'S POKER CARDS:" 
+    
+    CardNum=P.Cards1(player,0) : CardSuit=P.Cards2(player,0)
+    PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
+
+    CardNum=P.Cards1(player,1) : CardSuit=P.Cards2(player,1)
+    PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
 
     CLRWITH
+
+
+
+
+    
 
     # *** END ***

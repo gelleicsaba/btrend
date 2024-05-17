@@ -299,6 +299,32 @@ ref customer
 	P.Customer(product) = customer
 ```
 
+### Arrays in struct
+
+You can use array in struct instance. If you specify (n) as default type it will be an array.
+```
+struct PokerPlayer 4
+    Name ""
+    Cards1 (2)
+    Cards2 (2)
+---
+
+string CardNums
+string CardSuites
+    CardNums="00 2 3 4 5 6 7 8 910 J Q K A"
+    CardSuites=CHR$(97)+CHR$(115)+CHR$(120)+CHR$(122)
+number CardNum
+number CardSuit
+    PRINT P.Name(player)+"'S POKER CARDS:" 
+    CardNum=P.Cards1(player,0) : CardSuit=P.Cards2(player,0)
+    PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
+    CardNum=P.Cards1(player,1) : CardSuit=P.Cards2(player,1)
+    PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
+    CLRWITH
+```
+As you can see the array will be actually a 2 dimensional array .\
+1st dimension is the instance reference value\
+2nd dimension is the array index number\
 
 ## Use c64list to create prg from output
 
