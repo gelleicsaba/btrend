@@ -301,7 +301,7 @@ ref customer
 
 ### Arrays in struct
 
-You can use array in struct instance. If you specify (n) as default type it will be an array.
+You can use array in struct instance. If you specify (n) as default value it will be an array.
 ```
 struct PokerPlayer 4
     Name ""
