@@ -415,7 +415,7 @@ Type the program name (without .prg)\
 If the progress is ready, reset and start your program
  (usually the name is C/\<prg name\> )
 
-Optionally, you can export the new prg with dirmaster (File / Import) and you can delete the old slow prg file from d64.
+Optionally, you can export the new prg with dirmaster (File / Export) and you can delete the old slow prg file from d64.
 
 
 
