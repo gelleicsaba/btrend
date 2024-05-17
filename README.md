@@ -121,6 +121,16 @@ You can write comments, and you can turn off when you create the output.
 ```
 if you dont turn off the comments the code will contain REM-s.
 
+## Hexadecimal and binary numbers
+
+There are binary and hexadecimal number types:
+```
+b'0110 : 4 bit binary number
+B'00100010 : 8 bit binary number
+h'A7 : 1 byte hexadecimal number
+H'D020 : 2 byte hexadecimal address
+```
+
 ## WHEN vs. IF
 
 In case of the "if statement" (like 'IF condition THEN ...'), you must

@@ -213,6 +213,7 @@ for x in range(len(inLines2)):
         for y in range(len(withFinds)):
             if inLines2[x].find(withFinds[y]) > -1:
                 inLines2[x]=inLines2[x].replace(withFinds[y],withReplaces[y])
+
 withFinds=None
 withReplaces=None
 
@@ -222,6 +223,33 @@ for t in range(len(inLines2)):
         defines1.append(tmp[0].strip().replace("\\20"," "))
         defines2.append(tmp[1].strip().replace("\\20"," "))
         inLines2[t]=""
+    if inLines2[t].find("'")>-1:
+        row=inLines2[t].strip()
+        for q in range(len(row)):
+            finds=[]
+            repls=[]
+            if row[q]=="'":
+                if row[q-1]=="h":
+                    num=int("0x"+row[q+1:q+3], 0)
+                    finds.append("h'"+row[q+1:q+3])
+                    repls.append(str(num))
+                elif row[q-1]=="H":
+                    num=int("0x"+row[q+1:q+5], 0)
+                    finds.append("H'"+row[q+1:q+5])
+                    repls.append(str(num))
+                elif row[q-1]=="B":
+                    num=int(row[q+1:q+9], 2)
+                    finds.append("B'"+row[q+1:q+9])
+                    repls.append(str(num))
+                elif row[q-1]=="b":
+                    num=int(row[q+1:q+5], 2)
+                    finds.append("b'"+row[q+1:q+5])
+                    repls.append(str(num))
+            for p in range(len(finds)):
+                if verb:
+                    print("Replace contant " + finds[p]+"  ->  "+repls[p])
+                inLines2[t]=inLines2[t].replace(finds[p],repls[p])
+
 varIndex1=0
 varIndex2=0
 var1st="ABCDEFGHIJKLMNOPQRSTUVWXYZ"

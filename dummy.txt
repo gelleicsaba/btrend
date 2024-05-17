@@ -185,9 +185,16 @@ number CardSuit
     PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
     CLRWITH
 
+    PRINT "PRESS SPACE TO CONTIONUE!"
+@Wait3:
+    P=PEEK({keyInput})
+    IF P<>{keySpace} THEN GOTO @Wait3:
 
-
-
-    
-
+    # *** HEXA AND BINARY NUMBERS ***
+    A=B'10101001 : B=b'0110
+    PRINT "BIN 10101001 = "+STR$(A)
+    PRINT "BIN 0110 = "+STR$(B)
+    A=h'A8 : B=H'D020
+    PRINT "HEX A8 = "+STR$(A)
+    PRINT "HEX D020 = "+STR$(B)
     # *** END ***
