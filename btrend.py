@@ -218,11 +218,7 @@ withFinds=None
 withReplaces=None
 
 for t in range(len(inLines2)):
-    if inLines2[t].strip()[:7]=="define ":
-        tmp=inLines2[t].strip()[7:].split("=")
-        defines1.append(tmp[0].strip().replace("\\20"," "))
-        defines2.append(tmp[1].strip().replace("\\20"," "))
-        inLines2[t]=""
+
     if inLines2[t].find("'")>-1:
         row=inLines2[t].strip()
         for q in range(len(row)):
@@ -249,6 +245,12 @@ for t in range(len(inLines2)):
                 if verb:
                     print("Replace contant " + finds[p]+"  ->  "+repls[p])
                 inLines2[t]=inLines2[t].replace(finds[p],repls[p])
+
+    if inLines2[t].strip()[:7]=="define ":
+        tmp=inLines2[t].strip()[7:].split("=")
+        defines1.append(tmp[0].strip().replace("\\20"," "))
+        defines2.append(tmp[1].strip().replace("\\20"," "))
+        inLines2[t]=""
 
 varIndex1=0
 varIndex2=0
