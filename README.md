@@ -396,7 +396,7 @@ The most easiest way to run or test .prg, drag and drop it into a running vice e
 
 The dummy.txt in here contains almost every type of examples.
 
-## Speed up you basic program with Blitz
+## Speed up your basic program with Blitz
 
 The basic programs are very slow in general that's why it is recommended to speed up.\
 The most simplier method is that you rebuild it with blitz.
