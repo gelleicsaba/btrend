@@ -1,4 +1,9 @@
 import sys
+import re
+
+def wordsReplace(text, s,r):
+    return re.sub(re.escape(s) + '(?=[\=\(\)\$\[\]\{\}\+\-\*\/\:\;\&\!\<\>.,\s]|$)', r, text)
+
 n = len(sys.argv)
 if n == 1:
     print("BTrend - c64 basic sequence generator")
@@ -25,6 +30,8 @@ errs=False
 testCase=False
 defines1=[]
 defines2=[]
+vars1=[]
+vars2=[]
 for p in range(n):
     if p > 0:
         if sys.argv[p] == "-v":
@@ -243,7 +250,7 @@ for t in range(len(inLines2)):
                     repls.append(str(num))
             for p in range(len(finds)):
                 if verb:
-                    print("Replace contant " + finds[p]+"  ->  "+repls[p])
+                    print("Replace constant " + finds[p]+"  ->  "+repls[p])
                 inLines2[t]=inLines2[t].replace(finds[p],repls[p])
 
     if inLines2[t].strip()[:7]=="define ":
@@ -264,8 +271,8 @@ for t in range(len(inLines2)):
             varRealName=varRealName+"$"
         if verb:
             print("Create a variable to '"+varName+"' ('"+varRealName+"').")
-        defines1.append(varName)
-        defines2.append(varRealName)
+        vars1.append(varName)
+        vars2.append(varRealName)
         varIndex2 = varIndex2 + 1
         if varIndex2==len(var2nd):
             varIndex1 = varIndex1 + 1
@@ -276,14 +283,13 @@ for t in range(len(inLines2)):
         varRealName=var1st[varIndex1]+var2nd[varIndex2]
         if verb:
             print("Create a reference to '"+varName+"' ('"+varRealName+"').")
-        defines1.append(varName)
-        defines2.append(varRealName)
+        vars1.append(varName)
+        vars2.append(varRealName)
         varIndex2 = varIndex2 + 1
         if varIndex2==len(var2nd):
             varIndex1 = varIndex1 + 1
             varIndex2 = 0
         inLines2[t]=""
-
 
 
 for t in range(len(defines1)):
@@ -292,6 +298,14 @@ for t in range(len(defines1)):
     for q in range(len(inLines2)):
         if inLines2[q][:2]!="# ":
             inLines2[q]=inLines2[q].replace(defines1[t],defines2[t])
+
+for t in range(len(vars1)):
+    if verb:
+        print("Replace vars, '"+vars1[t]+"' to '"+vars2[t]+"'.")
+    for q in range(len(inLines2)):
+        if inLines2[q][:2]!="# ":
+            inLines2[q]=wordsReplace(inLines2[q],vars1[t],vars2[t])
+
 if not skipCm:
     inLines=[]
     for x in range(len(inLines2)):
