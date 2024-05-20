@@ -162,6 +162,37 @@ SKIP
 ```
 Important: You can't use the "WHEN...SKIP" nested.
 
+## Methods
+
+Methods is runnable subroutines that have parameters. A method declaration give subroutine name and parameters, and with a CALL command you can run the subroutine.
+
+```
+define {screenMap}=H'0400
+define {colorMap}=H'D800
+number XPos
+number YPos
+number Char
+number Color
+
+	GOTO @Start:
+
+METHOD PutCharacter XPos,YPos,Char,Color
+	POKE {screenMap}+(YPos*40)+XPos,Char
+    POKE {colorMap}+(YPos*40)+XPos,Color
+	RETURN
+
+@Start:
+	CALL PutCharacter 3,7,h'13
+	CALL PutCharacter 3,8,h'10
+	CALL PutCharacter 3,9,h'11
+	CALL PutCharacter 3,10,h'12
+```
+Important: 
+- METHOD and CALL is always one line command.
+- If you would like to use a multi dimensional array value (like Num(1,3) etc.. ) as parameter, use ; instead of comma. The program will split the parameters by comma, and the nested phrases with commas may cause confusion. 
+(e.g. 1,2,Cube(3,4,7) are incorrect parameter values, and the correct are 1,2,Cube(3;4;7)  )
+- The parameters in METHOD declaration must be variables, like num,string,ref. The program don't use stack because it would be slower. Regardless, you'd like to use stack, you must create a dim array buffer and the push,pop routines for this.
+
 ## Structures
 
 Structures is complex types, and you can create instances from that types. \
