@@ -164,7 +164,7 @@ Important: You can't use the "WHEN...SKIP" nested.
 
 ## Methods
 
-Methods is runnable subroutines that have parameters. A method declaration contain a subroutine name and parameters, and with a CALL command you can run the subroutine.
+Methods are runnable subroutines that have parameters. A method declaration contains a subroutine name and parameters, and with a CALL command you can run the subroutine.
 
 ```
 define {screenMap}=H'0400
