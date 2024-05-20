@@ -178,7 +178,7 @@ number Color
 
 METHOD PutCharacter XPos,YPos,Char,Color
 	POKE {screenMap}+(YPos*40)+XPos,Char
-    POKE {colorMap}+(YPos*40)+XPos,Color
+	POKE {colorMap}+(YPos*40)+XPos,Color
 	RETURN
 
 @Start:
