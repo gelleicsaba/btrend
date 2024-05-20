@@ -32,6 +32,8 @@ defines1=[]
 defines2=[]
 vars1=[]
 vars2=[]
+methods=[]
+methodVars=[]
 for p in range(n):
     if p > 0:
         if sys.argv[p] == "-v":
@@ -290,7 +292,46 @@ for t in range(len(inLines2)):
             varIndex1 = varIndex1 + 1
             varIndex2 = 0
         inLines2[t]=""
-
+    elif inLines2[t].strip()[:7]=="METHOD ":
+        if verb:
+            print("Add method: " + inLines2[t].strip())
+        sp=inLines2[t].strip().split()
+        methName=sp[1]
+        if len(sp)>2:
+            if len(sp)>3:
+                for q in range(len(sp)-3):
+                    sp[2]=sp[2]+sp[q+3]
+            methPars=sp[2].split(",")
+        else:
+            methPars=[]
+        inLines2[t]="@"+sp[1]+":"
+        methods.append(methName)
+        methodVars.append(methPars)
+    elif inLines2[t].strip()[:5]=="CALL ":
+        sp=inLines2[t].strip().split()
+        methName=sp[1]
+        if len(sp)>2:
+            if len(sp)>3:
+                for q in range(len(sp)-3):
+                    sp[2]=sp[2]+sp[q+3]
+            methValues=sp[2].split(",")
+        else:
+            methValues=[]
+        methIndex=-1
+        tmp=""
+        for x in range(len(methods)):
+            if methods[x]==methName:
+                methIndex=x
+                if len(methodVars[x])!=len(methValues):
+                    print("Error: Call parameters is incorrect in " + inLines2[t].strip())
+                    print("Method parameters: " + str(len(methodVars[x])))
+                    print("Call parameters: " + str(len(methValues)))
+                    sys.exit(1)
+                for y in range(len(methodVars[x])):
+                    parVal=methValues[y].replace(";",",")
+                    tmp=tmp+methodVars[x][y]+"="+parVal+" : "
+                tmp=tmp+"GOSUB @" + methName + ":"
+                inLines2[t]=tmp
 
 for t in range(len(defines1)):
     if verb:

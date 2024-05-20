@@ -41,6 +41,7 @@ struct PokerPlayer 4
     # *** GREETINGS TEXT ***
     PRINT "HELLO C64"
     RETURN
+
 @main:
     # *** START THE MAIN ***
     PRINT "START THE MAIN"
@@ -197,4 +198,58 @@ number CardSuit
     A=h'A8 : B=H'D020
     PRINT "HEX A8 = "+STR$(A)
     PRINT "HEX D020 = "+STR$(B)
+
+
+    PRINT "PRESS SPACE TO CONTIONUE!"
+@Wait4:
+    P=PEEK({keyInput})
+    IF P<>{keySpace} THEN GOTO @Wait4:
+    GOTO @MethodCallExample:
+
+number Num2
+number Num
+string Method
+
+METHOD Calculate Num,Num2,Method
+    # METHOD/CALL EXAMPLE
+    WHEN Method="+"
+        Num=Num+Num2
+        RETURN
+    SKIP
+    WHEN Method="-"
+        Num=Num-Num2
+        RETURN
+    SKIP
+    WHEN Method="*"
+        Num=Num*Num2
+        RETURN
+    SKIP
+    WHEN Method="/"
+        Num=Num/Num2
+        RETURN
+    SKIP
+    WHEN Method="C"
+        Num=0
+        RETURN
+    SKIP
+    WHEN Method="MINUS"
+        Num=-Num
+        RETURN
+    SKIP
+    WHEN Method="INV"
+        Num=1/Num
+        RETURN
+    SKIP
+    # OTHER CASE IS A SIMPLE SET
+    Num=Num2
+    RETURN
+
+@MethodCallExample:
+
+    CALL Calculate 0,12,"+"
+    CALL Calculate Num,2,"-"
+    CALL Calculate Num,3,"*"
+    CALL Calculate Num,10,"/"
+    PRINT "CALC VALUE IS "+STR$(Num)
+
     # *** END ***
