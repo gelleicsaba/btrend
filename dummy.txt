@@ -29,7 +29,7 @@ struct PokerPlayer 4
     Cards2 (2)
 ---
 
-enum Car Ford, Toyota, BMW, AlphaRomeo
+enum Car Ford,Toyota,BMW,AlphaRomeo
 number car
 
 @start:
