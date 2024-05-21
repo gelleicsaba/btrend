@@ -209,7 +209,7 @@ while t<len(inLines2):
         sp=inLines2[t].strip().split()
         enumName=sp[1]
         if len(sp)>3:
-            for x in range(len(sp))-3:
+            for x in range(len(sp)-3):
                 sp[2]=sp[2]+sp[x+3].strip()
                 sp[x+3]=""
         enums=sp[2].split(",")
