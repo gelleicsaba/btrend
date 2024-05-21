@@ -29,6 +29,9 @@ struct PokerPlayer 4
     Cards2 (2)
 ---
 
+enum Car Ford,Toyota,BMW,AlphaRomeo
+number car
+
 @start:
     # *** START ***
     PRINT "START THE PROGRAM"
@@ -251,5 +254,24 @@ METHOD Calculate Num,Num2,Method
     CALL Calculate Num,3,"*"
     CALL Calculate Num,10,"/"
     PRINT "CALC VALUE IS "+STR$(Num)
+
+    WITH C Car
+    car = C.Ford
+    
+    WHEN car=C.AlphaRomeo
+    PRINT "ALPHAROMEO, ITALY" : GOTO @endCase:
+    SKIP
+    WHEN car=C.Ford
+    PRINT "FORD, USA" : GOTO @endCase:
+    SKIP
+    WHEN car=C.Toyota
+    PRINT "TOYOTA, JAPAN" : GOTO @endCase:
+    SKIP
+    WHEN car=C.BMW
+    PRINT "BMW, GERMANY"
+    SKIP
+@endCase:
+    :
+    CLRWITH
 
     # *** END ***

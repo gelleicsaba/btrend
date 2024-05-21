@@ -381,6 +381,31 @@ As you can see the array will be actually a 2 dimensional array .\
 1st dimension is the instance reference value\
 2nd dimension is the array index number\
 
+## Enumerations
+
+You can create enumeration with enum keyword. A variable with number type can have an enum value.
+The enumerated values will be replaced with a sequence number (e.g. enum Color Red,Green,Blue,Yellow -> Color.Red will be 1 and Color.Blue will be 3)
+
+```
+number startDelivery
+number destination
+
+enum Continent Europe,Asia,Africa,America,Australia
+
+	WITH C Continent
+	startDelivery = C.Asia
+	destination = C.Europe
+
+	WHEN startDelivery=C.Asia AND destination=C.Europe
+	PRINT "SHIP DELIVERY"
+	SKIP
+	WHEN startDelivery=C.America AND destination=C.Australia
+	PRINT "PLANE DELIVERY"
+	SKIP
+
+	CLRWITH	
+```
+
 ## Use c64list to create prg from output
 
 Download the c64list, and you can create the prg file from output.

@@ -204,6 +204,19 @@ while t<len(inLines2):
         if verb:
             print("Found a new instance request with '"+ref+"'")
         inLines2[t]="\tSubResult="+ref+":GOSUB @Free"+cName+":"
+    
+    elif inLines2[t].lstrip()[:5]=="enum ":
+        sp=inLines2[t].strip().split()
+        enumName=sp[1]
+        if len(sp)>3:
+            for x in range(len(sp))-3:
+                sp[2]=sp[2]+sp[x+3].strip()
+                sp[x+3]=""
+        enums=sp[2].split(",")
+        for x in range(len(enums)):
+            defines1.append(enumName+"."+enums[x])
+            defines2.append(str(x+1))
+        inLines2[t]=""
     t = t + 1
 
 withFinds=[]
