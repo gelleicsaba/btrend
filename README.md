@@ -418,19 +418,26 @@ You can turn on or off this function with -p command option.
 
 e.g.
 ```
-	[]
-	Y=0
-	FOR X=0 TO 255
-		POKE H'0400,X
-		POKE H'D800,Y
-		Y=Y+1
-		IF Y=h'10 THEN Y=0
-	NEXT
-	[/]
+number Num
+number Fact
 
-	It will be in the output:
+    GOTO @PackExample:
 
-	10 Y=0 : FOR X=0 TO 255 : POKE H'0400,X : POKE H'D800,Y : Y=Y+1 : IF Y=h'10 THEN Y=0 : NEXT
+METHOD PrintFact Fact
+        []
+    Num=1
+    FOR X=1 TO Fact
+        Num=Num*X
+    NEXT
+    PRINT STR$(Fact)+"! = "+STR$(Num)
+    RETURN
+        [/]
+
+@PackExample:
+    CALL PrintFact 3
+    CALL PrintFact 5
+    CALL PrintFact 11
+
 ```
 Important: 
 - Dont use [] & [/] with one row commands,GOTO or GOSUB or labels (e.g. WHEN,CALL,number,@GoHere: etc.. )
