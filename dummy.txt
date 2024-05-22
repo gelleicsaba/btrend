@@ -272,6 +272,24 @@ METHOD Calculate Num,Num2,Method
     SKIP
 @endCase:
     :
-    CLRWITH
+    GOTO @PackExample:
+
+number Num
+number Fact
+
+METHOD PrintFact Fact
+        []
+    Num=1
+    FOR X=1 TO Fact
+        Num=Num*X
+    NEXT
+    PRINT STR$(Fact)+"! = "+STR$(Num)
+    RETURN
+        [/]
+
+@PackExample:
+    CALL PrintFact 3
+    CALL PrintFact 5
+    CALL PrintFact 11
 
     # *** END ***
