@@ -17,6 +17,8 @@ if n == 1:
     print("  -s : skip comments")
     print("  -step=<num> : sequence step")
     print("  -t : turn on test mode")
+    print("  -p : turn on pack mode")
+    print("        pack mode: the marked rows will be grouped in one row")
     print("")
     print("e.g.: ")
     print("  python btrend.py \"-in=c:\\your folder\\input-file.txt\" \"-out=c:\\your folder\\output-file.txt\" -v -s -step=100")
@@ -28,6 +30,7 @@ skipCm=False
 seqStep=10
 errs=False
 testCase=False
+packMode=False
 defines1=[]
 defines2=[]
 vars1=[]
@@ -48,6 +51,8 @@ for p in range(n):
             seqStep=int((sys.argv[p])[6:])
         elif sys.argv[p] == "-t":
             testCase=True
+        elif sys.argv[p] == "-p":
+            packMode=True
 if inFile==None or outFile==None:
     print("Error: No input/output file specified")
     sys.exit(1)
@@ -103,6 +108,31 @@ while t<len(inLines2):
         else:
             inLines2[t]="\t"+inLines2[t].strip()[2:]
     t=t+1
+
+if packMode:
+    t=0
+    while t<len(inLines2):
+        if inLines2[t].strip()=="[]":
+            inLines2[t]=""
+            q=t+2
+            w=t+1
+            cnt=0
+            inLines2[w]=inLines2[w].rstrip()
+            while inLines2[q].strip()!="[/]" and cnt<20:
+                inLines2[w]=inLines2[w]+" :" + inLines2[q].strip()
+                inLines2[q]=""
+                q=q+1
+                cnt=cnt+1
+            if inLines2[q].strip()=="[/]":
+                inLines2[q]=""
+        elif inLines2[t].strip()=="[/]":
+            inLines2[t]=""
+        t=t+1
+else:
+    for t in range(len(inLines2)):
+        z=inLines2[t].strip()
+        if z=="[]" or z=="[/]":
+            inLines2[t]=""
 
 skipSubRoutine=10000
 subRes=True

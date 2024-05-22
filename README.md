@@ -68,6 +68,8 @@ options:
   -s : skip comments
   -step=<num> : sequence step
   -t : turn on test mode
+  -p : turn on pack mode
+	    pack mode: the marked rows will be grouped in one row
 ```
 
 e.g. you can create the output with these command
@@ -405,6 +407,35 @@ enum Continent Europe,Asia,Africa,America,Australia
 
 	CLRWITH	
 ```
+
+## PACK mode
+
+You can mark blocks, that you would like to group in one row. Mark the block with [] and [/].
+Certainly, you can also use the : but in that case it will be one long row in the source.
+
+
+You can turn on or off this function with -p command option.
+
+e.g.
+```
+	[]
+	Y=0
+	FOR X=0 TO 255
+		POKE H'0400,X
+		POKE H'D800,Y
+		Y=Y+1
+		IF Y=h'10 THEN Y=0
+	NEXT
+	[/]
+
+	It will be in the output:
+
+	10 Y=0 : FOR X=0 TO 255 : POKE H'0400,X : POKE H'D800,Y : Y=Y+1 : IF Y=h'10 THEN Y=0 : NEXT
+```
+Important: 
+- Dont use [] & [/] with one row commands,GOTO or GOSUB or labels (e.g. WHEN,CALL,number,@GoHere: etc.. )
+- Dont use [] & [/] with more than 15-20 commands, because there is a limit on the size of row
+- Use this function only if you'd like to optimize or speed up the basic program. Don't use it for other cases, becasue it will be uneffective, and harder to read.
 
 ## Use c64list to create prg from output
 

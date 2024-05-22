@@ -1,7 +1,7 @@
 using "lib/include.txt"
 
-define {screenMap}=1024
-define {colorMap}=55296
+define {screenMap}=H'0400
+define {colorMap}=H'D800
 define {line}=40
 define {brick}=102
 define {green}=5
