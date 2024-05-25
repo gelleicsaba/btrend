@@ -73,11 +73,30 @@ include "data.txt"
     ! PRINT "NOT VISIBLE IN TEST MODE"
 
     WHEN MyFavouriteNumber>5
-    PRINT "MY FAV. NUM. > 5"
+        PRINT "MY FAV. NUM. > 5"
+
+        WHEN MyFavouriteNumber>10
+            PRINT "MY FAV. NUM. > 10"
+        ELSE        
+            PRINT "MY FAV. NUM. <= 10"
+        SKIP
+
+
+    ELSE
+        PRINT "MY FAV. NUM. <= 5"
+
+        WHEN MyFavouriteNumber<2
+            PRINT "MY FAV. NUM. < 2"
+        ELSE        
+            PRINT "MY FAV. NUM. >= 2"
+        SKIP
+
     SKIP
 
     WHEN MyFavouriteNumber=3
-    PRINT "MY FAV. NUM. = 3"
+        PRINT "MY FAV. NUM. = 3"
+    ELSE
+        PRINT "MY FAV. NUM. <> 3"
     SKIP
 
     # SPACE TO CONTINUE

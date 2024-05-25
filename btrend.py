@@ -419,18 +419,47 @@ else:
 skipAddress=100000
 for x in range(len(inLines)):
     if inLines[x].lstrip()[:5]=="WHEN ":
+        z=0
+        skipCmd=""
+        elseCmd=""
+        while inLines[x][z]==" " or inLines[x][z]=="\t":
+            if inLines[x][z]==" ":
+                skipCmd=skipCmd+" "
+                elseCmd=elseCmd+" "
+            elif inLines[x][z]=="\t":
+                skipCmd=skipCmd+"    "
+                elseCmd=elseCmd+"    "
+            z=z+1
+        skipCmd=skipCmd+"SKIP"
+        elseCmd=elseCmd+"ELSE"
+        skipCmdLen=len(skipCmd)
         y=x+1
         skipLabel=None
+        elseLabel=None
+        elsePos=-1
         while skipLabel==None and y<len(inLines):
-            if inLines[y].lstrip()[:4]=="SKIP":
+            if inLines[y].replace("\t","    ")[:skipCmdLen]==skipCmd:
                 skipLabel="@SKIP"+str(skipAddress)+":"
                 inLines[y]=skipLabel
                 if y==len(inLines)-1:
                     inLines.append(":")
                 skipAddress=skipAddress+1
+            elif inLines[y].replace("\t","    ")[:skipCmdLen]==elseCmd:
+                elseLabel="@ELSE"+str(skipAddress)+":"
+                inLines[y]=elseLabel
+                if y==len(inLines)-1:
+                    inLines.append(":")
+                skipAddress=skipAddress+1
+                elsePos=y
             y=y+1
-        inLines[x]=inLines[x].replace("WHEN ","IFNOT(")
-        inLines[x]=inLines[x].rstrip()+") THEN GOTO "+skipLabel
+
+        if elseLabel==None:
+            inLines[x]=inLines[x].replace("WHEN ","IFNOT(")
+            inLines[x]=inLines[x].rstrip()+") THEN GOTO "+skipLabel
+        else:
+            inLines[x]=inLines[x].replace("WHEN ","IFNOT(")
+            inLines[x]=inLines[x].rstrip()+") THEN GOTO "+elseLabel
+            inLines.insert(elsePos,"GOTO "+ skipLabel)
 
 m=0
 for t in inLines:

@@ -153,16 +153,51 @@ e.g.:
 ```
 A=4
 WHEN A<5
-PRINT "THE A < 5"
-PRINT "..."
+	PRINT "THE A < 5"
+	PRINT "..."
 SKIP
 
 WHEN A>20
-PRINT "THE A > 20"
+	PRINT "THE A > 20"
 SKIP
 
 ```
-Important: You can't use the "WHEN...SKIP" nested.
+### ELSE and NESTED WHEN ... SKIP blocks
+You can also use ELSE command in WHEN ... SKIP block, but it is not mandatory.
+```
+number MyFavNumber
+	MyFavNumber=7
+	
+	WHEN MyFavNumber > 5
+		PRINT "FAV.NUM > 5"
+	ELSE
+		PRINT "FAV.NUM <= 5"
+	SKIP
+```
+
+You can use nested WHEN blocks, and you must use WHEN blocks in specific tabbed position.
+
+```
+number MyFavNumber
+	MyFavNumber=7
+	
+	WHEN MyFavNumber > 5
+		PRINT "FAV.NUM > 5"
+
+		WHEN MyFavNumber < 10
+			PRINT "FAV.NUM < 10"
+		ELSE
+			PRINT "FAV.NUM >= 10"
+		SKIP
+
+	ELSE
+		PRINT "FAV.NUM <= 5"
+	SKIP
+```
+Important: 
+- You must use four spaces as a tab
+- You can use tab instead of spaces, but it is not suggested
+
 
 ## Methods
 
@@ -286,7 +321,7 @@ If you'd like to clear instance use "FREE \<struct name\> \<instance ref\>"
 
 ```
 	FOR X=0 TO 2
-	FREE Product products(X)
+		FREE Product products(X)
 	NEXT
 	
 	FREE Customer customer
@@ -301,13 +336,13 @@ There is an array that tells existing/non-existing instances. You can use \<stru
     P.Name(product)="IMPACT DRILL"	
 
 	WHEN P.$(product)=1
-	PRINT P.Name(product)+" IS EXIST"
+		PRINT P.Name(product)+" IS EXIST"
 	SKIP
 
 	FREE Product product
 
 	WHEN P.$(product)<>1
-	PRINT "THE PRODUCT IS NOT EXIST"
+		PRINT "THE PRODUCT IS NOT EXIST"
 	SKIP
 ```
 Important: The \$ sign doesn't mean that it would be a string. (The '\$' is a special property name of instances)
