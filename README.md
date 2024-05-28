@@ -199,6 +199,30 @@ Important:
 - You can use tab instead of spaces, but it is not suggested
 
 
+## Iterations
+You can specify iterations with WHILE \<condition\> ...\<code\>... REPEAT.
+The iterations can be nested.
+
+```
+    # WHILE EXAMPLE
+number Num
+number Divisor
+number Digit
+    Num=173464
+    Divisor=1000000
+    PRINT STR$(Num)+" DIGITS:"
+
+    WHILE Divisor>=1
+        Digit=INT(Num/Divisor)
+        PRINT STR$(Divisor)+": "+STR$(Digit)
+        Num=Num-(Divisor*Digit)
+        Divisor=Divisor/10
+    REPEAT
+```
+Important: 
+- You must use four spaces as a tab
+- You can use tab instead of spaces, but it is not suggested
+
 ## Methods
 
 Methods are runnable subroutines that have parameters. A method declaration contains a subroutine name and parameters, and with a CALL command you can run the subroutine.

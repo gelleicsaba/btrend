@@ -417,7 +417,8 @@ else:
                 print("Skip empty line on row " + str(x))
 
 skipAddress=100000
-for x in range(len(inLines)):
+x=0
+while x<len(inLines):
     if inLines[x].lstrip()[:5]=="WHEN ":
         z=0
         skipCmd=""
@@ -460,6 +461,36 @@ for x in range(len(inLines)):
             inLines[x]=inLines[x].replace("WHEN ","IFNOT(")
             inLines[x]=inLines[x].rstrip()+") THEN GOTO "+elseLabel
             inLines.insert(elsePos,"GOTO "+ skipLabel)
+
+    elif inLines[x].lstrip()[:6]=="WHILE ":
+        whileCondition=inLines[x].strip()[6:]
+        z=0
+        skipCmd=""
+        while inLines[x][z]==" " or inLines[x][z]=="\t":
+            if inLines[x][z]==" ":
+                skipCmd=skipCmd+" "
+            elif inLines[x][z]=="\t":
+                skipCmd=skipCmd+"    "
+            z=z+1
+        skipCmd=skipCmd+"REPEAT"
+        skipCmdLen=len(skipCmd)
+        inLines[x]="@WHILE"+str(skipAddress)+":"
+        whileLabel=inLines[x]
+        skipAddress=skipAddress+1
+        done=False
+        y=x+1
+        while (not done) and y<len(inLines):
+            if inLines[y].replace("\t","    ")[:skipCmdLen]==skipCmd:
+                inLines[y]="\tGOTO "+whileLabel
+                if y==len(inLines)-1:
+                    inLines.append(":")
+                repeatLabel="@"+str(skipAddress)+":"
+                skipAddress=skipAddress+1
+                inLines.insert(y+1,repeatLabel)
+                inLines.insert(x+1,"IFNOT("+whileCondition+")THENGOTO"+repeatLabel)
+            y=y+1
+
+    x=x+1
 
 m=0
 for t in inLines:
