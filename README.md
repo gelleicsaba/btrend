@@ -254,6 +254,35 @@ Important:
 (e.g. 1,2,Cube(3,4,7) are incorrect parameter values, and the correct are 1,2,Cube(3;4;7)  )
 - The parameters in METHOD declaration must be variables, like num,string,ref. The program don't use stack because it would be slower. Regardless, you'd like to use stack, you must create a dim array buffer and the push,pop routines for this.
 
+
+## Flags
+You can use abbrevation to evaluate flags with EVAL keyword. The flags must be a number. \
+Usage: EVAL \<flagname\>,\<condition\>
+```
+    # FLAGS EXAMPLE
+number Potato
+number Tomato
+number Appetizer
+number Meal
+enum Menu ONION_SOUP,TOMATO_SOUP,BEEF_STEW,SPAGHETTI_BOLOGNESE
+    Meal=0
+    WITH M Menu    
+    
+    WHILE Meal<1 OR Meal>4
+        PRINT "1:ONION SOUP 2:TOMATO SOUP 3:BEEF STEW 4:SPAGHETTI BOLOGNESE"
+        INPUT "CHOOSE MEAL (1-4):"; Meal
+    REPEAT    
+
+    EVAL Potato,Meal=M.BEEF_STEW
+    EVAL Tomato,Meal=M.TOMATO_SOUP OR Meal=M.SPAGHETTI_BOLOGNESE
+    EVAL Appetizer,Meal=M.TOMATO_SOUP OR Meal=M.ONION_SOUP
+
+    PRINT "POTATO: "+STR$(Potato)
+    PRINT "TOMATO: "+STR$(Tomato)
+    PRINT "APPETIZER: "+STR$(Appetizer)
+```
+EVAL is the same as "\<flag\>=0 : IF CONDITION THEN \<flag\>=1".
+
 ## Structures
 
 Structures is complex types, and you can create instances from that types. \

@@ -488,7 +488,18 @@ while x<len(inLines):
                 skipAddress=skipAddress+1
                 inLines.insert(y+1,repeatLabel)
                 inLines.insert(x+1,"IFNOT("+whileCondition+")THENGOTO"+repeatLabel)
+                done=True
             y=y+1
+    elif inLines[x].lstrip()[:5]=="EVAL ":
+        sp=inLines[x].strip()[5:].split(",")
+        evName=sp[0]
+        cnd=""
+        for q in range(len(sp)-1):
+            if cnd=="":
+                cnd=sp[q+1]
+            else:
+                cnd=cnd+","+sp[q+1]
+        inLines[x]="\t"+evName+"=0:IF"+cnd+"THEN"+evName+"=1"
 
     x=x+1
 
