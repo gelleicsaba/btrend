@@ -343,7 +343,7 @@ for t in range(len(inLines2)):
         if len(sp)>2:
             if len(sp)>3:
                 for q in range(len(sp)-3):
-                    sp[2]=sp[2]+sp[q+3]
+                    sp[2]=sp[2]+" "+sp[q+3]
             methPars=sp[2].split(",")
         else:
             methPars=[]
@@ -356,7 +356,7 @@ for t in range(len(inLines2)):
         if len(sp)>2:
             if len(sp)>3:
                 for q in range(len(sp)-3):
-                    sp[2]=sp[2]+sp[q+3]
+                    sp[2]=sp[2]+" "+sp[q+3]
             methValues=sp[2].split(",")
         else:
             methValues=[]
