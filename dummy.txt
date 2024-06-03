@@ -1,5 +1,6 @@
 using "lib/include.txt"
 
+define ClearScreen=PRINTCHR$(147)
 define {screenMap}=H'0400
 define {colorMap}=H'D800
 define {line}=40
@@ -100,14 +101,13 @@ include "data.txt"
     SKIP
 
     # SPACE TO CONTINUE
-    PRINT "PRESS SPACE TO CONTIONUE!"
+    PRINT "PRESS SPACE TO CONTINUE!"
 
 define {keyInput}=197
 define {keySpace}=60
 
 @Wait:
-    P=PEEK({keyInput})
-    IF P<>{keySpace} THEN GOTO @Wait:
+    P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait:
 
     # *** TEST STRUCTURES ***
 ref products
@@ -175,10 +175,9 @@ ref customer
     SKIP
     CLRWITH
 
-    PRINT "PRESS SPACE TO CONTIONUE!"
+    PRINT "PRESS SPACE TO CONTINUE!"
 @Wait2:
-    P=PEEK({keyInput})
-    IF P<>{keySpace} THEN GOTO @Wait2:
+    P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait2:
 
     # *** TEST ARR PROPS IN STRUCT ***
 ref player
@@ -208,10 +207,9 @@ number CardSuit
     PRINT "  "+MID$(CardSuites,CardSuit,1)+MID$(CardNums,CardNum*2,2)
     CLRWITH
 
-    PRINT "PRESS SPACE TO CONTIONUE!"
+    PRINT "PRESS SPACE TO CONTINUE!"
 @Wait3:
-    P=PEEK({keyInput})
-    IF P<>{keySpace} THEN GOTO @Wait3:
+    P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait3:
 
     # *** HEXA AND BINARY NUMBERS ***
     A=B'10101001 : B=b'0110
@@ -222,10 +220,10 @@ number CardSuit
     PRINT "HEX D020 = "+STR$(B)
 
 
-    PRINT "PRESS SPACE TO CONTIONUE!"
+    PRINT "PRESS SPACE TO CONTINUE!"
 @Wait4:
-    P=PEEK({keyInput})
-    IF P<>{keySpace} THEN GOTO @Wait4:
+    P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait4:
+
     GOTO @MethodCallExample:
 
 number Num2
@@ -349,5 +347,44 @@ enum Menu ONION_SOUP,TOMATO_SOUP,BEEF_STEW,SPAGHETTI_BOLOGNESE
     PRINT "TOMATO: "+STR$(Tomato)
     PRINT "APPETIZER: "+STR$(Appetizer)
 
+    PRINT "PRESS SPACE TO CONTINUE!"
+
+@Wait5:
+    P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait5:
+
+    # TEXT,COLOR,SCREEN EXAMPLE
+    ClearScreen
+
+    COLOR 15,9,10,{green}
+    TEXT 15,9,HELLO_C64!
+
+    COLOR 16,10,12,{lightgreen}
+    TEXT 16,10,ABRAKA_DABRA
+
+    COLOR 17,11,9,{orange}
+    TEXTINV 17,11,INVERTED!
+
+    VCOLOR 12,9,8,{yellow}
+    VTEXTINV 12,9,VERTICAL
+
+    SCREEN 2,6, h'55,h'40,h'40,h'49
+    VSCREEN 2,7, h'42,h'42,h'42,h'42
+    VSCREEN 5,7, h'42,h'42,h'42,h'42
+    SCREEN 2,11, h'4a,h'40,h'40,h'4b
+
+    PRINT "PRESS SPACE TO CONTINUE!"
+@Wait6:
+    P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait6:
+
+    POKE 53272,23
+    LTEXT 15,9,Hello_C64!
+    LTEXT 16,10,Abraka_Dabra
+    LTEXTINV 17,11,Inverted!
+    LVTEXTINV 12,9,Vertical
+
+    SCREEN 2,6, h'20,h'20,h'20,h'20
+    VSCREEN 2,7, h'20,h'20,h'20,h'20
+    VSCREEN 5,7, h'20,h'20,h'20,h'20
+    SCREEN 2,11, h'20,h'20,h'20,h'20
 
     # *** END ***

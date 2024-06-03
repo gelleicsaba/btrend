@@ -254,6 +254,47 @@ Important:
 (e.g. 1,2,Cube(3,4,7) are incorrect parameter values, and the correct are 1,2,Cube(3;4;7)  )
 - The parameters in METHOD declaration must be variables, like num,string,ref. The program don't use stack because it would be slower. Regardless, you'd like to use stack, you must create a dim array buffer and the push,pop routines for this.
 
+## Print text at specific position
+There are commands to print text at specific position:
+- TEXT x,y,text (or UTEXT) : Print an uppercase text
+- LTEXT x,y,text : Print a lowercase text
+- TEXTINV or LTEXTINV  : Print an inverse text (uppercase/lowercase)
+- VTEXT, LVTEXT : Print vertical text (uppercase/lowercase)
+- VTEXTINV, LVTEXTINV : Print invert vertial text (uppercase/lowercase)
+- COLOR x,y,length,color : Set color at specific position
+- VCOLOR : Set color at specific position with vertical direction
+
+These commands use POKE-s to write the text, or appy color.
+```
+	# UPPER TEXT
+    COLOR 15,9,10,{green}
+    TEXT 15,9,HELLO_C64!
+    COLOR 16,10,12,{lightgreen}
+    TEXT 16,10,ABRAKA_DABRA
+    COLOR 17,11,9,{orange}
+    TEXTINV 17,11,INVERTED!
+    VCOLOR 12,9,8,{yellow}
+    VTEXTINV 12,9,VERTICAL
+    SCREEN 2,6,h'55,h'40,h'40,h'49
+    VSCREEN 2,7,h'42,h'42,h'42,h'42
+    VSCREEN 5,7,h'42,h'42,h'42,h'42
+    SCREEN 2,11,h'4a,h'40,h'40,h'4b
+
+    PRINT "PRESS SPACE TO CONTINUE!"
+@Wait:
+    P=PEEK(197):IF P<>{keySpace} THEN GOTO @Wait:
+    POKE 53272,23
+	# LOWER TEXT
+    LTEXT 15,9,Hello_C64!
+    LTEXT 16,10,Abraka_Dabra
+    LTEXTINV 17,11,Inverted!
+    LVTEXTINV 12,9,Vertical
+    SCREEN 2,6,h'20,h'20,h'20,h'20
+    VSCREEN 2,7,h'20,h'20,h'20,h'20
+    VSCREEN 5,7,h'20,h'20,h'20,h'20
+    SCREEN 2,11,h'20,h'20,h'20,h'20	
+```
+Important: The commands above are one line commands. Dont use more in the same line.
 
 ## Flags
 You can use abbrevation to evaluate flags with EVAL keyword. The flags must be a number. \

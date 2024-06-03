@@ -31,8 +31,8 @@ seqStep=10
 errs=False
 testCase=False
 packMode=False
-defines1=[]
-defines2=[]
+defines1=["{black}","{white}","{red}","{cyan}","{purple}","{green}","{blue}","{yellow}","{orange}","{brown}","{lightred}","{darkgrey}","{grey}","{lightgreen}","{lightblue}","{lightgrey}"]
+defines2=["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
 vars1=[]
 vars2=[]
 methods=[]
@@ -308,6 +308,8 @@ varIndex1=0
 varIndex2=0
 var1st="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var2nd="0123456789"+var1st
+upetscii="@ABCDEFGHIJKLMNOPQRSTUVWXYZ[&]^ˇ !\"#$%&'()*+,-./0123456789:;<=>?˘abcdefghijklmnopqrstuvwxyz"
+lpetscii="@abcdefghijklmnopqrstuvwxyz[&]^ˇ !\"#$%&'()*+,-./0123456789:;<=>?ˇABCDEFGHIJKLMNOPQRSTUVWXYZ"
 for t in range(len(inLines2)):
     if inLines2[t].strip()[:7]=="number " or inLines2[t].strip()[:7]=="string ":
         varName=inLines2[t].strip()[7:]
@@ -375,6 +377,132 @@ for t in range(len(inLines2)):
                     tmp=tmp+methodVars[x][y]+"="+parVal+" : "
                 tmp=tmp+"GOSUB @" + methName + ":"
                 inLines2[t]=tmp
+    elif inLines2[t].strip()[:5]=="TEXT " or inLines2[t].strip()[:6]=="UTEXT ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().replace("\,","Ł").split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        text=sp[2].replace("_"," ").replace("Ł",",")
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(text)):
+            row=row+":POKEZ9+"+str(x)+","+str(upetscii.find(text[x]))
+        inLines2[t]=row
+    elif inLines2[t].strip()[:6]=="VTEXT " or inLines2[t].strip()[:7]=="UVTEXT ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().replace("\,","Ł").split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        text=sp[2].replace("_"," ").replace("Ł",",")
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(text)):
+            row=row+":POKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x]))
+        inLines2[t]=row        
+    elif inLines2[t].strip()[:8]=="TEXTINV " or inLines2[t].strip()[:9]=="UTEXTINV ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().replace("\,","Ł").split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        text=sp[2].replace("_"," ").replace("Ł",",")
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(text)):
+            row=row+":POKEZ9+"+str(x)+","+str(upetscii.find(text[x])+128)
+        inLines2[t]=row
+    elif inLines2[t].strip()[:9]=="VTEXTINV " or inLines2[t].strip()[:10]=="UVTEXTINV ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().replace("\,","Ł").split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        text=sp[2].replace("_"," ").replace("Ł",",")
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(text)):
+            row=row+":POKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x])+128)
+        inLines2[t]=row        
+    elif inLines2[t].strip()[:6]=="LTEXT ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().replace("\,","Ł").split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        text=sp[2].replace("_"," ").replace("Ł",",")
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(text)):
+            row=row+":POKEZ9+"+str(x)+","+str(lpetscii.find(text[x]))
+        inLines2[t]=row
+    elif inLines2[t].strip()[:7]=="LVTEXT ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().replace("\,","Ł").split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        text=sp[2].replace("_"," ").replace("Ł",",")
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(text)):
+            row=row+":POKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x]))
+        inLines2[t]=row
+    elif inLines2[t].strip()[:9]=="LTEXTINV ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().replace("\,","Ł").split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        text=sp[2].replace("_"," ").replace("Ł",",")
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(text)):
+            row=row+":POKEZ9+"+str(x)+","+str(lpetscii.find(text[x])+128)
+        inLines2[t]=row  
+    elif inLines2[t].strip()[:10]=="LVTEXTINV ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().replace("\,","Ł").split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        text=sp[2].replace("_"," ").replace("Ł",",")
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(text)):
+            row=row+":POKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x])+128)
+        inLines2[t]=row              
+    elif inLines2[t].strip()[:6]=="COLOR ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        ln=int(sp[2])
+        col=sp[3]
+        row="Z9=55296+("+ypos+"*40)+"+xpos
+        for x in range(ln):
+            row=row+":POKEZ9+"+str(x)+","+str(col)
+        inLines2[t]=row
+    elif inLines2[t].strip()[:7]=="VCOLOR ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        ln=int(sp[2])
+        col=sp[3]
+        row="Z9=55296+("+ypos+"*40)+"+xpos
+        for x in range(ln):
+            row=row+":POKEZ9+"+str(x)+"*40,"+str(col)
+        inLines2[t]=row
+    elif inLines2[t].strip()[:7]=="SCREEN ":
+        sp=inLines2[t].strip().split()
+        if len(sp)>2:
+            for x in range(len(sp)-2):
+                sp[1]=sp[1]+sp[x+2].strip()
+        sp=sp[1].strip().split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(sp)-2):
+            row=row+":POKEZ9+"+str(x)+","+sp[x+2]
+        inLines2[t]=row
+    elif inLines2[t].strip()[:8]=="VSCREEN ":
+        sp=inLines2[t].strip().split()
+        if len(sp)>2:
+            for x in range(len(sp)-2):
+                sp[1]=sp[1]+sp[x+2].strip()
+        sp=sp[1].strip().split(",")
+        xpos=sp[0]
+        ypos=sp[1]
+        row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(sp)-2):
+            row=row+":POKEZ9+"+str(x)+"*40,"+sp[x+2]
+        inLines2[t]=row
 
 for t in range(len(defines1)):
     if verb:
