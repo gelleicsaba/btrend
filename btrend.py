@@ -310,7 +310,9 @@ var1st="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var2nd="0123456789"+var1st
 upetscii="@ABCDEFGHIJKLMNOPQRSTUVWXYZ[&]^ˇ !\"#$%&'()*+,-./0123456789:;<=>?˘abcdefghijklmnopqrstuvwxyz"
 lpetscii="@abcdefghijklmnopqrstuvwxyz[&]^ˇ !\"#$%&'()*+,-./0123456789:;<=>?ˇABCDEFGHIJKLMNOPQRSTUVWXYZ"
-for t in range(len(inLines2)):
+
+t=0
+while t<len(inLines2):
     if inLines2[t].strip()[:7]=="number " or inLines2[t].strip()[:7]=="string ":
         varName=inLines2[t].strip()[7:]
         varRealName=var1st[varIndex1]+var2nd[varIndex2]
@@ -385,8 +387,17 @@ for t in range(len(inLines2)):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            row=row+":POKEZ9+"+str(x)+","+str(upetscii.find(text[x]))
-        inLines2[t]=row
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+","+str(upetscii.find(text[x]))
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+","+str(upetscii.find(text[x]))
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:6]=="VTEXT " or inLines2[t].strip()[:7]=="UVTEXT ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
@@ -395,8 +406,17 @@ for t in range(len(inLines2)):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            row=row+":POKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x]))
-        inLines2[t]=row        
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x]))
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x]))
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:8]=="TEXTINV " or inLines2[t].strip()[:9]=="UTEXTINV ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
@@ -405,8 +425,17 @@ for t in range(len(inLines2)):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            row=row+":POKEZ9+"+str(x)+","+str(upetscii.find(text[x])+128)
-        inLines2[t]=row
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+","+str(upetscii.find(text[x])+128)
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+","+str(upetscii.find(text[x])+128)
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:9]=="VTEXTINV " or inLines2[t].strip()[:10]=="UVTEXTINV ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
@@ -415,8 +444,17 @@ for t in range(len(inLines2)):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            row=row+":POKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x])+128)
-        inLines2[t]=row        
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x])+128)
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x])+128)
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:6]=="LTEXT ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
@@ -425,8 +463,17 @@ for t in range(len(inLines2)):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            row=row+":POKEZ9+"+str(x)+","+str(lpetscii.find(text[x]))
-        inLines2[t]=row
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+","+str(lpetscii.find(text[x]))
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+","+str(lpetscii.find(text[x]))
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:7]=="LVTEXT ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
@@ -435,8 +482,17 @@ for t in range(len(inLines2)):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            row=row+":POKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x]))
-        inLines2[t]=row
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x]))
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x]))
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:9]=="LTEXTINV ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
@@ -445,8 +501,17 @@ for t in range(len(inLines2)):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            row=row+":POKEZ9+"+str(x)+","+str(lpetscii.find(text[x])+128)
-        inLines2[t]=row  
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+","+str(lpetscii.find(text[x])+128)
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+","+str(lpetscii.find(text[x])+128)
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:10]=="LVTEXTINV ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
@@ -455,8 +520,17 @@ for t in range(len(inLines2)):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            row=row+":POKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x])+128)
-        inLines2[t]=row              
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x])+128)
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x])+128)
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:6]=="COLOR ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().split(",")
@@ -466,8 +540,17 @@ for t in range(len(inLines2)):
         col=sp[3]
         row="Z9=55296+("+ypos+"*40)+"+xpos
         for x in range(ln):
-            row=row+":POKEZ9+"+str(x)+","+str(col)
-        inLines2[t]=row
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+","+str(col)
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+","+str(col)
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:7]=="VCOLOR ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().split(",")
@@ -477,8 +560,17 @@ for t in range(len(inLines2)):
         col=sp[3]
         row="Z9=55296+("+ypos+"*40)+"+xpos
         for x in range(ln):
-            row=row+":POKEZ9+"+str(x)+"*40,"+str(col)
-        inLines2[t]=row
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+"*40,"+str(col)
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(col)
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:7]=="SCREEN ":
         sp=inLines2[t].strip().split()
         if len(sp)>2:
@@ -489,8 +581,17 @@ for t in range(len(inLines2)):
         ypos=sp[1]
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
-            row=row+":POKEZ9+"+str(x)+","+sp[x+2]
-        inLines2[t]=row
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+","+sp[x+2]
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+","+sp[x+2]
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:8]=="VSCREEN ":
         sp=inLines2[t].strip().split()
         if len(sp)>2:
@@ -501,8 +602,18 @@ for t in range(len(inLines2)):
         ypos=sp[1]
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
-            row=row+":POKEZ9+"+str(x)+"*40,"+sp[x+2]
-        inLines2[t]=row
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+"*40,"+sp[x+2]
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+"*40,"+sp[x+2]
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
+    t=t+1
 
 for t in range(len(defines1)):
     if verb:

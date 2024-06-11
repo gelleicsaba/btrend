@@ -372,6 +372,11 @@ enum Menu ONION_SOUP,TOMATO_SOUP,BEEF_STEW,SPAGHETTI_BOLOGNESE
     VSCREEN 5,7, h'42,h'42,h'42,h'42
     SCREEN 2,11, h'4a,h'40,h'40,h'4b
 
+    TEXT 0,20,THIS_IS_A_LONG_SAMPLE_HORIZONTAL_TEXT
+    TEXTINV 0,21,THIS_IS_A_LONG_SAMPLE_HORIZONTAL_TEXT
+    VTEXT 30,0,THIS_IS_A_LONG_TEXT
+    VTEXTINV 31,0,THIS_IS_A_LONG_TEXT
+
     PRINT "PRESS SPACE TO CONTINUE!"
 @Wait6:
     P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait6:
@@ -386,5 +391,10 @@ enum Menu ONION_SOUP,TOMATO_SOUP,BEEF_STEW,SPAGHETTI_BOLOGNESE
     VSCREEN 2,7, h'20,h'20,h'20,h'20
     VSCREEN 5,7, h'20,h'20,h'20,h'20
     SCREEN 2,11, h'20,h'20,h'20,h'20
+
+    LTEXT 0,20,This_is_a_long_sample_horizontal_text
+    LTEXTINV 0,21,This_is_a_long_sample_horizontal_text
+    LVTEXT 30,0,This_is_a_long_text
+    LVTEXTINV 31,0,This_is_a_long_text
 
     # *** END ***

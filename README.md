@@ -296,6 +296,16 @@ These commands use POKE-s to write the text, or appy color.
 ```
 Important: The commands above are one line commands. Dont use more in the same line.
 
+## Built-in color constants
+
+{black} {white} {red} {cyan} {purple} {green} {blue} {yellow} {orange} {brown} {lightred}\
+{darkgrey} {grey} {lightgreen} {lightblue} {lightgrey}
+
+```
+	# SET THE COLOR GREEN AT 1,1 POS.
+	POKE 55296,{green} : POKE 1024,3
+```
+
 ## Flags
 You can use abbrevation to evaluate flags with EVAL keyword. The flags must be a number. \
 Usage: EVAL \<flagname\>,\<condition\>
