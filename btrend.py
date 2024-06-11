@@ -600,6 +600,27 @@ while t<len(inLines2):
             inLines2[t]=""
             for x in range(len(rowsplit)):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
+    elif inLines2[t].strip()[:7]=="COLORS ":
+        sp=inLines2[t].strip().split()
+        if len(sp)>2:
+            for x in range(len(sp)-2):
+                sp[1]=sp[1]+sp[x+2].strip()
+        sp=sp[1].strip().split(",")
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
+        row="Z9=55296+("+ypos+"*40)+"+xpos
+        for x in range(len(sp)-2):
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+","+sp[x+2]
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+","+sp[x+2]
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:8]=="VSCREEN ":
         sp=inLines2[t].strip().split()
         if len(sp)>2:
@@ -609,6 +630,27 @@ while t<len(inLines2):
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         row="Z9=1024+("+ypos+"*40)+"+xpos
+        for x in range(len(sp)-2):
+            if x%10!=0 or x==0:
+                row=row+":POKEZ9+"+str(x)+"*40,"+sp[x+2]
+            else:
+                row=row+"\nPOKEZ9+"+str(x)+"*40,"+sp[x+2]
+        rowsplit=row.split("\n")
+        if len(rowsplit)==1:
+            inLines2[t]=rowsplit[0]
+        else:
+            inLines2[t]=""
+            for x in range(len(rowsplit)):
+                inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
+    elif inLines2[t].strip()[:8]=="VCOLORS ":
+        sp=inLines2[t].strip().split()
+        if len(sp)>2:
+            for x in range(len(sp)-2):
+                sp[1]=sp[1]+sp[x+2].strip()
+        sp=sp[1].strip().split(",")
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
+        row="Z9=55296+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
             if x%10!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+"*40,"+sp[x+2]

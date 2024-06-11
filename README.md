@@ -263,6 +263,10 @@ There are commands to print text at specific position:
 - VTEXTINV, LVTEXTINV : Print invert vertial text (uppercase/lowercase)
 - COLOR x,y,length,color : Set color at specific position
 - VCOLOR : Set color at specific position with vertical direction
+- SCREEN x,y,\<bytes\> : Set text with specific byte codes
+- VSCREEN : Set vertical text with specific byte codes
+- COLORS x,y,\<bytes\> : Set colors with specific color codes
+- VCOLORS x,y,\<bytes\> : Set colors in vertical direction with specific color codes
 
 These commands use POKE-s to write the text, or appy color.
 ```
