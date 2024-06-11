@@ -38,6 +38,9 @@ testCase=False
 packMode=False
 defines1=["{black}","{white}","{red}","{cyan}","{purple}","{green}","{blue}","{yellow}","{orange}","{brown}","{lightred}","{darkgrey}","{grey}","{lightgreen}","{lightblue}","{lightgrey}"]
 defines2=["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
+# dump free bytes
+defines1.append("{freebytes}")
+defines2.append("(FRE(0)-65536*(FRE(0)<0))")
 vars1=[]
 vars2=[]
 methods=[]

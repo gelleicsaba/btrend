@@ -398,3 +398,9 @@ enum Menu ONION_SOUP,TOMATO_SOUP,BEEF_STEW,SPAGHETTI_BOLOGNESE
     LVTEXTINV 31,0,This_is_a_long_text
 
     # *** END ***
+
+    PRINT "PRESS SPACE TO CONTINUE!"
+@Wait7:
+    P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait7:
+
+    PRINT {freebytes};" BYTES FREE"

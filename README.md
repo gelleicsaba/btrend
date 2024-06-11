@@ -306,6 +306,12 @@ Important: The commands above are one line commands. Dont use more in the same l
 	POKE 55296,{green} : POKE 1024,3
 ```
 
+## Other Built-in values
+You can get the current free bytes with {freebytes}.
+```
+	PRINT {freebytes};" BYTES FREE"
+```
+
 ## Flags
 You can use abbrevation to evaluate flags with EVAL keyword. The flags must be a number. \
 Usage: EVAL \<flagname\>,\<condition\>
