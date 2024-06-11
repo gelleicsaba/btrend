@@ -4,6 +4,11 @@ import re
 def wordsReplace(text, s,r):
     return re.sub(re.escape(s) + '(?=[\=\(\)\$\[\]\{\}\+\-\*\/\:\;\&\!\<\>.,\s]|$)', r, text)
 
+def prnth(text):
+    if text.find("+")>-1 or text.find("-")>-1 or text.find("*")>-1 or text.find("/")>-1:
+        return "("+text+")"
+    return text
+
 n = len(sys.argv)
 if n == 1:
     print("BTrend - c64 basic sequence generator")
@@ -382,8 +387,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:5]=="TEXT " or inLines2[t].strip()[:6]=="UTEXT ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
@@ -401,8 +406,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:6]=="VTEXT " or inLines2[t].strip()[:7]=="UVTEXT ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
@@ -420,8 +425,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:8]=="TEXTINV " or inLines2[t].strip()[:9]=="UTEXTINV ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
@@ -439,8 +444,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:9]=="VTEXTINV " or inLines2[t].strip()[:10]=="UVTEXTINV ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
@@ -458,8 +463,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:6]=="LTEXT ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
@@ -477,8 +482,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:7]=="LVTEXT ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
@@ -496,8 +501,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:9]=="LTEXTINV ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
@@ -515,8 +520,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:10]=="LVTEXTINV ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().replace("\,","Ł").split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
@@ -534,8 +539,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:6]=="COLOR ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         ln=int(sp[2])
         col=sp[3]
         row="Z9=55296+("+ypos+"*40)+"+xpos
@@ -554,8 +559,8 @@ while t<len(inLines2):
     elif inLines2[t].strip()[:7]=="VCOLOR ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         ln=int(sp[2])
         col=sp[3]
         row="Z9=55296+("+ypos+"*40)+"+xpos
@@ -577,8 +582,8 @@ while t<len(inLines2):
             for x in range(len(sp)-2):
                 sp[1]=sp[1]+sp[x+2].strip()
         sp=sp[1].strip().split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
             if x%10!=0 or x==0:
@@ -598,8 +603,8 @@ while t<len(inLines2):
             for x in range(len(sp)-2):
                 sp[1]=sp[1]+sp[x+2].strip()
         sp=sp[1].strip().split(",")
-        xpos=sp[0]
-        ypos=sp[1]
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
             if x%10!=0 or x==0:
