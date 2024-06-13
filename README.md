@@ -267,6 +267,8 @@ There are commands to print text at specific position:
 - VSCREEN : Set vertical text with specific byte codes
 - COLORS x,y,\<bytes\> : Set colors with specific color codes
 - VCOLORS x,y,\<bytes\> : Set colors in vertical direction with specific color codes
+- FILL x,y,length,char code : Fill given chars with specific length and position
+- VFILL : Fill given chars with specific length and position vertical direction
 
 These commands use POKE-s to write the text, or appy color.
 ```

@@ -395,7 +395,7 @@ while t<len(inLines2):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+","+str(upetscii.find(text[x]))
             else:
                 row=row+"\nPOKEZ9+"+str(x)+","+str(upetscii.find(text[x]))
@@ -414,7 +414,7 @@ while t<len(inLines2):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x]))
             else:
                 row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x]))
@@ -433,7 +433,7 @@ while t<len(inLines2):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+","+str(upetscii.find(text[x])+128)
             else:
                 row=row+"\nPOKEZ9+"+str(x)+","+str(upetscii.find(text[x])+128)
@@ -452,7 +452,7 @@ while t<len(inLines2):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x])+128)
             else:
                 row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(upetscii.find(text[x])+128)
@@ -471,7 +471,7 @@ while t<len(inLines2):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+","+str(lpetscii.find(text[x]))
             else:
                 row=row+"\nPOKEZ9+"+str(x)+","+str(lpetscii.find(text[x]))
@@ -490,7 +490,7 @@ while t<len(inLines2):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x]))
             else:
                 row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x]))
@@ -509,7 +509,7 @@ while t<len(inLines2):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+","+str(lpetscii.find(text[x])+128)
             else:
                 row=row+"\nPOKEZ9+"+str(x)+","+str(lpetscii.find(text[x])+128)
@@ -528,7 +528,7 @@ while t<len(inLines2):
         text=sp[2].replace("_"," ").replace("Ł",",")
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(text)):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x])+128)
             else:
                 row=row+"\nPOKEZ9+"+str(x)+"*40,"+str(lpetscii.find(text[x])+128)
@@ -581,7 +581,7 @@ while t<len(inLines2):
         ypos=prnth(sp[1])
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+","+sp[x+2]
             else:
                 row=row+"\nPOKEZ9+"+str(x)+","+sp[x+2]
@@ -602,7 +602,7 @@ while t<len(inLines2):
         ypos=prnth(sp[1])
         row="Z9=55296+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+","+sp[x+2]
             else:
                 row=row+"\nPOKEZ9+"+str(x)+","+sp[x+2]
@@ -623,7 +623,7 @@ while t<len(inLines2):
         ypos=prnth(sp[1])
         row="Z9=1024+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+"*40,"+sp[x+2]
             else:
                 row=row+"\nPOKEZ9+"+str(x)+"*40,"+sp[x+2]
@@ -644,7 +644,7 @@ while t<len(inLines2):
         ypos=prnth(sp[1])
         row="Z9=55296+("+ypos+"*40)+"+xpos
         for x in range(len(sp)-2):
-            if x%18!=0 or x==0:
+            if x%17!=0 or x==0:
                 row=row+":POKEZ9+"+str(x)+"*40,"+sp[x+2]
             else:
                 row=row+"\nPOKEZ9+"+str(x)+"*40,"+sp[x+2]

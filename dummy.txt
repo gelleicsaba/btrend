@@ -377,6 +377,8 @@ enum Menu ONION_SOUP,TOMATO_SOUP,BEEF_STEW,SPAGHETTI_BOLOGNESE
     VTEXT 30,0,THIS_IS_A_LONG_TEXT
     VTEXTINV 31,0,THIS_IS_A_LONG_TEXT
 
+    FILL 5,17,20,h'40
+
     PRINT "PRESS SPACE TO CONTINUE!"
 @Wait6:
     P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait6:
@@ -397,10 +399,12 @@ enum Menu ONION_SOUP,TOMATO_SOUP,BEEF_STEW,SPAGHETTI_BOLOGNESE
     LVTEXT 30,0,This_is_a_long_text
     LVTEXTINV 31,0,This_is_a_long_text
 
-    # *** END ***
+    
 
     PRINT "PRESS SPACE TO CONTINUE!"
 @Wait7:
     P=PEEK({keyInput}):IF P<>{keySpace} THEN GOTO @Wait7:
 
     PRINT {freebytes};" BYTES FREE"
+
+    # *** END ***    
