@@ -2,7 +2,7 @@ import sys
 import re
 
 def wordsReplace(text, s,r):
-    return re.sub(re.escape(s) + '(?=[\=\(\)\$\[\]\{\}\+\-\*\/\:\;\&\!\<\>.,\s]|$)', r, text)
+    return re.sub(re.escape(s) + '(?=[\\=\\(\\)\\$\\[\\]\\{\\}\\+\\-\\*\\/\\:\\;\\&\\!\\<\\>.,\\s]|$)', r, text)
 
 def prnth(text):
     if text.find("+")>-1 or text.find("-")>-1 or text.find("*")>-1 or text.find("/")>-1:
@@ -389,7 +389,7 @@ while t<len(inLines2):
                 inLines2[t]=tmp
     elif inLines2[t].strip()[:5]=="TEXT " or inLines2[t].strip()[:6]=="UTEXT ":
         sp=inLines2[t].strip().split()
-        sp=sp[1].strip().replace("\,","Ł").split(",")
+        sp=sp[1].strip().replace("\\,","Ł").split(",")
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
@@ -408,7 +408,7 @@ while t<len(inLines2):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:6]=="VTEXT " or inLines2[t].strip()[:7]=="UVTEXT ":
         sp=inLines2[t].strip().split()
-        sp=sp[1].strip().replace("\,","Ł").split(",")
+        sp=sp[1].strip().replace("\\,","Ł").split(",")
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
@@ -427,7 +427,7 @@ while t<len(inLines2):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:8]=="TEXTINV " or inLines2[t].strip()[:9]=="UTEXTINV ":
         sp=inLines2[t].strip().split()
-        sp=sp[1].strip().replace("\,","Ł").split(",")
+        sp=sp[1].strip().replace("\\,","Ł").split(",")
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
@@ -446,7 +446,7 @@ while t<len(inLines2):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:9]=="VTEXTINV " or inLines2[t].strip()[:10]=="UVTEXTINV ":
         sp=inLines2[t].strip().split()
-        sp=sp[1].strip().replace("\,","Ł").split(",")
+        sp=sp[1].strip().replace("\\,","Ł").split(",")
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
@@ -465,7 +465,7 @@ while t<len(inLines2):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:6]=="LTEXT ":
         sp=inLines2[t].strip().split()
-        sp=sp[1].strip().replace("\,","Ł").split(",")
+        sp=sp[1].strip().replace("\\,","Ł").split(",")
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
@@ -484,7 +484,7 @@ while t<len(inLines2):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:7]=="LVTEXT ":
         sp=inLines2[t].strip().split()
-        sp=sp[1].strip().replace("\,","Ł").split(",")
+        sp=sp[1].strip().replace("\\,","Ł").split(",")
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
@@ -503,7 +503,7 @@ while t<len(inLines2):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:9]=="LTEXTINV ":
         sp=inLines2[t].strip().split()
-        sp=sp[1].strip().replace("\,","Ł").split(",")
+        sp=sp[1].strip().replace("\\,","Ł").split(",")
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
@@ -522,7 +522,7 @@ while t<len(inLines2):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     elif inLines2[t].strip()[:10]=="LVTEXTINV ":
         sp=inLines2[t].strip().split()
-        sp=sp[1].strip().replace("\,","Ł").split(",")
+        sp=sp[1].strip().replace("\\,","Ł").split(",")
         xpos=prnth(sp[0])
         ypos=prnth(sp[1])
         text=sp[2].replace("_"," ").replace("Ł",",")
