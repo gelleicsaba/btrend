@@ -312,6 +312,13 @@ for t in range(len(inLines2)):
         defines2.append(tmp[1].strip().replace("\\20"," "))
         inLines2[t]=""
 
+for t in range(len(defines1)):
+    if verb:
+        print("Replace defines, '"+defines1[t]+"' to '"+defines2[t]+"'.")
+    for q in range(len(inLines2)):
+        if inLines2[q][:2]!="# ":
+            inLines2[q]=inLines2[q].replace(defines1[t],defines2[t])
+
 varIndex1=0
 varIndex2=0
 var1st="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -656,13 +663,6 @@ while t<len(inLines2):
             for x in range(len(rowsplit)):
                 inLines2.insert(t, rowsplit[len(rowsplit)-1-x])
     t=t+1
-
-for t in range(len(defines1)):
-    if verb:
-        print("Replace defines, '"+defines1[t]+"' to '"+defines2[t]+"'.")
-    for q in range(len(inLines2)):
-        if inLines2[q][:2]!="# ":
-            inLines2[q]=inLines2[q].replace(defines1[t],defines2[t])
 
 for t in range(len(vars1)):
     if verb:
