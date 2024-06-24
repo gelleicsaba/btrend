@@ -645,10 +645,11 @@ The most easiest way to run or test .prg, drag and drop it into a running vice e
 
 The dummy.txt in here contains almost every type of examples.
 
-## VS Code syntax highlight with todo-highlight extension
+## VS Code syntax highlight with todo-highlight v2 extension
 
-Install the todo-highlight extension in VS Code, and copy the following settings as todo-highlight settings.json.
+Install the todo-highlight v2 extension in VS Code, and copy the following content the settings.json.
 
+https://github.com/gelleicsaba/btrend/blob/master/vscode/todo-highlight/settings.json
 
 ## Speed up your basic program with Blitz
 
