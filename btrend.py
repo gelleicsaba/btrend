@@ -317,6 +317,33 @@ for t in range(len(defines1)):
         print("Replace defines, '"+defines1[t]+"' to '"+defines2[t]+"'.")
     for q in range(len(inLines2)):
         if inLines2[q][:2]!="# ":
+            if inLines2[q].find("len"+defines1[t]+"+")>-1:
+                g=inLines2[q].find("len"+defines1[t]+"+")+len(defines1[t])+4
+                tmp=""
+                done=False
+                while g<len(inLines2[q]) and not done:
+                    c=inLines2[q][g]
+                    if c=="0" or c=="1" or c=="2" or c=="3" or c=="4" or c=="5" or c=="6" or c=="7" or c=="8" or c=="9":
+                        tmp=tmp+c
+                    else:
+                        done=True
+                    g=g+1
+                inLines2[q]=inLines2[q].replace("len"+defines1[t]+"+"+tmp, str(len(defines2[t])+int(tmp)))
+            elif inLines2[q].find("len"+defines1[t]+"-")>-1:
+                g=inLines2[q].find("len"+defines1[t]+"-")+len(defines1[t])+4
+                tmp=""
+                done=False
+                while g<len(inLines2[q]) and not done:
+                    c=inLines2[q][g]
+                    if c=="0" or c=="1" or c=="2" or c=="3" or c=="4" or c=="5" or c=="6" or c=="7" or c=="8" or c=="9":
+                        tmp=tmp+c
+                    else:
+                        done=True
+                    g=g+1
+                inLines2[q]=inLines2[q].replace("len"+defines1[t]+"-"+tmp, str(len(defines2[t])-int(tmp)))
+            else:
+                inLines2[q]=inLines2[q].replace("len"+defines1[t],str(len(defines2[t])) )
+
             inLines2[q]=inLines2[q].replace(defines1[t],defines2[t])
 
 varIndex1=0
@@ -562,6 +589,34 @@ while t<len(inLines2):
         ln=int(sp[2])
         col=sp[3]
         inLines2[t]="\tZ9=1024+("+ypos+"*40)+"+xpos+":FORZ8=0TO"+str(ln-1)+":POKEZ9+Z8,"+str(col)+":NEXT"
+    elif inLines2[t].strip()[:5]=="VINV ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().split(",")
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
+        ln=int(sp[2])
+        inLines2[t]="\tZ9=1024+("+ypos+"*40)+"+xpos+":FORZ8=0TO"+str(ln-1)+":POKEZ9+(40*Z8),(128ORPEEK(Z9+(40*Z8)))ANDNOT(128ANDPEEK(Z9+(40*Z8))):NEXT"
+    elif inLines2[t].strip()[:4]=="INV ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().split(",")
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
+        ln=int(sp[2])
+        inLines2[t]="\tZ9=1024+("+ypos+"*40)+"+xpos+":FORZ8=0TO"+str(ln-1)+":POKEZ9+Z8,(128ORPEEK(Z9+Z8))ANDNOT(128ANDPEEK(Z9+Z8)):NEXT"
+    elif inLines2[t].strip()[:8]=="CLRVINV ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().split(",")
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
+        ln=int(sp[2])
+        inLines2[t]="\tZ9=1024+("+ypos+"*40)+"+xpos+":FORZ8=0TO"+str(ln-1)+":POKEZ9+(40*Z8),127ANDPEEK(Z9+(40*Z8)):NEXT"
+    elif inLines2[t].strip()[:7]=="CLRINV ":
+        sp=inLines2[t].strip().split()
+        sp=sp[1].strip().split(",")
+        xpos=prnth(sp[0])
+        ypos=prnth(sp[1])
+        ln=int(sp[2])
+        inLines2[t]="\tZ9=1024+("+ypos+"*40)+"+xpos+":FORZ8=0TO"+str(ln-1)+":POKEZ9+Z8,127ANDPEEK(Z9+Z8):NEXT"
     elif inLines2[t].strip()[:7]=="VCOLOR ":
         sp=inLines2[t].strip().split()
         sp=sp[1].strip().split(",")

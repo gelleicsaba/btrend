@@ -269,6 +269,10 @@ There are commands to print text at specific position:
 - VCOLORS x,y,\<bytes\> : Set colors in vertical direction with specific color codes
 - FILL x,y,length,char code : Fill given chars with specific length and position
 - VFILL : Fill given chars with specific length and position vertical direction
+- INV x,y,lenght : make text inverse
+- VINV : make text inverse vertically
+- CLRINV x,y,length : change inverse text to normal text
+- CLRVINV : change inverse text to normal text vertically
 
 These commands use POKE-s to write the text, or appy color.
 ```
@@ -662,5 +666,9 @@ If the progress is ready, reset and start your program
 
 Optionally, you can export the new prg with dirmaster (File / Export) and you can delete the old slow prg file from d64.
 
+## Speed up your loading with prg2crt
 
+https://frank-buss.de/c64/prg2crt/index.html
 
+D64 loading is slightly slow therefore you should convert it to CRT (cartridge image).
+You can export the blitz PRG file with dirmaster, and you can convert this file with prg2crt.
