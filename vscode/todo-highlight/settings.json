@@ -1,0 +1,441 @@
+{
+    "workbench.colorTheme": "Visual Studio Light",
+    "editor.fontSize": 12,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "todohighlight.isEnable": true,
+    "todohighlight.keywords": [
+
+
+        {
+            "text": "WHEN",
+            "color": "#008000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "IF",
+            "color": "#008000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "THEN",
+            "color": "#008000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "OR",
+            "color": "#008000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "SKIP",
+            "color": "#008000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "ELSE",
+            "color": "#008000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        }, 
+        {
+            "text": "FOR",
+            "color": "#0000d0",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "NEXT",
+            "color": "#0000d0",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "TEXTINV",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "INV",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "VINV",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "CALL",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "FILL",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "TEXT",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "COLORS",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "COLOR",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "VCOLOR",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },        
+        {
+            "text": "VFILL",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },        
+        {
+            "text": "SCREEN",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "CHR$",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "h'",
+            "color": "#A4700F",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "H'",
+            "color": "#A4700F",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "b'",
+            "color": "#A4700F",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "B'",
+            "color": "#A4700F",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+
+
+        {
+            "text": "GOTO",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "GOSUB",
+            "color": "#900000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "->",
+            "color": "#0000d0",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "WHILE",
+            "color": "#a00000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "REPEAT",
+            "color": "#a00000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "INT",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "RND",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "DIM",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "PEEK",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "POKE",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": ">>",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },                
+        {
+            "text": "GET",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },         
+        {
+            "text": "PRINT",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": ":",
+            "color": "#0077b6",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "@",
+            "color": "#7f5539",
+            "backgroundColor": "#fff3b0",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "$",
+            "color": "#2f6690",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "{",
+            "color": "#2f6690",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "}",
+            "color": "#2f6690",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "(",
+            "color": "#ca6702",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": ")",
+            "color": "#ca6702",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "+",
+            "color": "#005f73",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "-",
+            "color": "#005f73",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "*",
+            "color": "#005f73",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "/",
+            "color": "#005f73",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "=",
+            "color": "#005f73",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "0",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "1",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "2",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "3",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "4",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "5",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "6",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "7",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "8",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+        {
+            "text": "9",
+            "color": "#7209b7",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)"
+        },
+       
+
+        {
+            "text": "[]",
+            "color": "#000000",
+            "backgroundColor": "#e9ecef",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+            "isWholeLine": true,
+        },
+        {
+            "text": "[/]",
+            "color": "#000000",
+            "backgroundColor": "#e9ecef",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+            "isWholeLine": true,
+        },
+        {
+            "text": "METHOD",
+            "color": "#a00000",
+            "backgroundColor": "#ffd166",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+            "isWholeLine": true,
+        },
+        {
+            "text": "RETURN",
+            "color": "#a00000",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+            "border": "1px solid #f9844a",
+            "borderRadius": "1px",
+        },
+        {
+            "text": "using",
+            "color": "#3a6ea5",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+            "isWholeLine": true,
+        },
+        {
+            "text": "define",
+            "color": "#0fa3b1",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+        },
+        {
+            "text": "number",
+            "color": "#0fa3b1",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+        },
+        {
+            "text": "string",
+            "color": "#0fa3b1",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+        },
+        {
+            "text": "# ",
+            "color": "#6c757d",
+            "backgroundColor": "#ffffff",
+            "overviewRulerColor": "rgba(255,189,42,0.8)",
+            "isWholeLine": true,
+        },
+        
+
+
+        
+    ],
+    "todohighlight.include": [
+        "**/*.basic"
+    ],
+    "todohighlight.defaultStyle": {
+    
+        "color": "#2196f3",
+        "backgroundColor": "#ffeb3b"
+    }
+}
